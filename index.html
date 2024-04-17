@@ -195,6 +195,48 @@
                 },
             };
         </script>
+        <script>
+            function createCalendarEvent() {
+    // Define event details
+    const eventName = "Live Rishtey Show";
+    const eventDescription = `"Hey are you looking for Matrimonial Profiles / Rishtey? Watch our LiveRishtey Show at https://www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526"`;
+    const eventTimezone = "Asia/Kolkata"; // IST timezone
+    const eventStartTime = new Date(); // Today's date
+    eventStartTime.setHours(17, 0, 0); // Set event time to 5:00 PM IST
+
+    // Convert event start time to UTC
+    const utcEventStartTime = eventStartTime.toISOString().replace(/-/g, "").replace(/:/g, "").slice(0, -5) + "Z";
+
+    // Define event duration (in minutes)
+    const eventDuration = 60 * 24; // 24 hours
+
+    // Define event notifications (in minutes before event start time)
+    const notifications = [-15, -10, -1];
+
+    // Generate event text with notifications
+    let eventText = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//EasyMatri//Calendar Event//EN\nBEGIN:VEVENT\n`;
+    eventText += `SUMMARY:${eventName}\nDESCRIPTION:${eventDescription}\n`;
+    eventText += `DTSTART;TZID=${eventTimezone}:${utcEventStartTime}\n`;
+    eventText += `DURATION:PT${eventDuration}M\n`;
+    for (const notification of notifications) {
+        eventText += `BEGIN:VALARM\nACTION:DISPLAY\nDESCRIPTION:${eventName}\nTRIGGER:-PT${-notification}M\nEND:VALARM\n`;
+    }
+    eventText += `END:VEVENT\nEND:VCALENDAR`;
+
+    // Create download link for .ics file
+    const downloadLink = document.createElement("a");
+    downloadLink.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(eventText);
+    downloadLink.download = "event.ics";
+    downloadLink.click();
+}
+
+// Call the function to create the calendar event
+createCalendarEvent();
+
+        function createCalendarEvent() {
+            // JavaScript function code here...
+        }
+    </script>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
 
@@ -345,11 +387,8 @@
                                             Join our Community
                                         </p>
                                     </a>
-                                    <a href="https://calendar.app.google/CKNYatqG4FxMjJvq9"
-                                        class="relative inline-block w-80 mx-auto p-3 rounded sm:w-auto group h-11 bg-gradient-to-r from-purple-600 to-sky-500 before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-400 before:to-sky-400 before:scale-75 before:opacity-50 before:rounded-md before:blur-lg before:transition before:duration-300 active:before:scale-90 focus:before:scale-90 focus:before:opacity-75 hover:before:scale-100 hover:before:opacity-100">
-                                        <p
-                                            class="relative flex justify-center h-full text-sm font-medium items-center text-white tracking-wide  px-[calc(1.5rem-1px)] rounded-[calc(0.5rem-1px)] transition duration-300">
-                                            <span class="mr-3"><svg class="w-6 h-6"
+                                    <button onclick="createCalendarEvent()" class="relative inline-block w-80 mx-auto p-3 rounded sm:w-auto group h-11 bg-white before:transition before:duration-300 active:before:scale-90 focus:before:scale-90 focus:before:opacity-75 hover:before:scale-100 hover:before:opacity-100"> Add to your Calendar
+                                       <span class="mr-3"><svg class="w-6 h-6"
                                                     enable-background="new 0 0 455.731 455.731" fill="none"
                                                     stroke="currentColor" version="1.1" viewBox="0 0 455.73 455.73"
                                                     xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
@@ -359,14 +398,11 @@
                                                         <path
                                                             d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
                                                     </g>
-                                                </svg></span>
-                                            Add to Calendar
-                                        </p>
-                                    </a>
+                                                </svg>
+                                       </span>
+                                    </button>
                                 </div>
                                 
-                                <style>.addToCalendar {background-color:#44c767;border-radius:28px;border:1px solid #18ab29;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:16px;padding:16px 31px;text-decoration:none;text-shadow:0px 1px 0px #2f6627;}.addToCalendar:hover {background-color:#5cbf2a;}.addToCalendar:active {position:relative;top:1px;}</style><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20240414T113000Z%2F20240414T123000Z&details=Fastest%20Search%20for%20Marriage%20Profiles.%0AWatch%20our%20Live%20Rishtey%20Premiere%20Show.%0A%0AEvent%20Place%20%3A%20YouTube%20Channel%0Ahttps%3A%2F%2Fwww.youtube.com%2F%40easymatri%2Fstreams%0A%0AOne%20Stop%20to%20get%20Matched.%F0%9F%98%8E%0AFor%20Registration%20Please%20Contact%20us%3A%0A%2B91%209429692526&location=https%3A%2F%2Fwww.youtube.com%2F%40easymatri%2Fstreams&text=Live%20Rishtey%20Premiere%20Show" class="addToCalendar">Add to Calendar</a>
-
                                 <div class="relative mb-6" style="padding-top: 56.25%">
                                     <iframe class="absolute inset-0 w-full aspect-video"
                                         src="https://www.youtube.com/embed/qr8abvqPm2Y" title="YouTube video player"
