@@ -196,45 +196,42 @@
             };
         </script>
         <script>
-            function createCalendarEvent() {
-    // Define event details
-    const eventName = "Live Rishtey Show";
-    const eventDescription = `"Hey are you looking for Matrimonial Profiles / Rishtey? Watch our LiveRishtey Show at https://www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526"`;
-    const eventTimezone = "Asia/Kolkata"; // IST timezone
-    const eventStartTime = new Date(); // Today's date
-    eventStartTime.setHours(17, 0, 0); // Set event time to 5:00 PM IST
+        function createCalendarEvent() {
+            // Define event details
+            const eventName = "Hey are you looking for Matrimonial Profiles/ Rishtey?";
+            const eventDescription = `"Hey are you looking for Matrimonial Profiles/ Rishtey? Watch our LiveRishtey Show at www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526"`;
+            const eventTimezone = "Asia/Kolkata"; // IST timezone
+            const eventStartTime = new Date(); // Today's date
+            eventStartTime.setHours(17, 0, 0); // Set event time to 5:00 PM IST
 
-    // Convert event start time to UTC
-    const utcEventStartTime = eventStartTime.toISOString().replace(/-/g, "").replace(/:/g, "").slice(0, -5) + "Z";
+            // Convert event start time to UTC
+            const utcEventStartTime = eventStartTime.toISOString().replace(/-/g, "").replace(/:/g, "").slice(0, -5) + "Z";
 
-    // Define event duration (in minutes)
-    const eventDuration = 60 * 24; // 24 hours
+            // Define event duration (in minutes)
+            const eventDuration = 60 * 24; // 24 hours
 
-    // Define event notifications (in minutes before event start time)
-    const notifications = [-15, -10, -1];
+            // Define event notifications (in minutes before event start time)
+            const notifications = [-15, -10, -1];
 
-    // Generate event text with notifications
-    let eventText = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//EasyMatri//Calendar Event//EN\nBEGIN:VEVENT\n`;
-    eventText += `SUMMARY:${eventName}\nDESCRIPTION:${eventDescription}\n`;
-    eventText += `DTSTART;TZID=${eventTimezone}:${utcEventStartTime}\n`;
-    eventText += `DURATION:PT${eventDuration}M\n`;
-    for (const notification of notifications) {
-        eventText += `BEGIN:VALARM\nACTION:DISPLAY\nDESCRIPTION:${eventName}\nTRIGGER:-PT${-notification}M\nEND:VALARM\n`;
-    }
-    eventText += `END:VEVENT\nEND:VCALENDAR`;
+            // Generate event text with notifications
+            let eventText = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//EasyMatri//Calendar Event//EN\nBEGIN:VEVENT\n`;
+            eventText += `SUMMARY:${eventName}\nDESCRIPTION:${eventDescription}\n`;
+            eventText += `DTSTART;TZID=${eventTimezone}:${utcEventStartTime}\n`;
+            eventText += `DURATION:PT${eventDuration}M\n`;
+            for (const notification of notifications) {
+                eventText += `BEGIN:VALARM\nACTION:DISPLAY\nDESCRIPTION:${eventName}\nTRIGGER:-PT${-notification}M\nEND:VALARM\n`;
+            }
+            eventText += `END:VEVENT\nEND:VCALENDAR`;
 
-    // Create download link for .ics file
-    const downloadLink = document.createElement("a");
-    downloadLink.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(eventText);
-    downloadLink.download = "event.ics";
-    downloadLink.click();
-}
+            // Generate data URI for the event text
+            const dataURI = "data:text/calendar;charset=utf-8," + encodeURIComponent(eventText);
 
-document.getElementById("createEventButton").addEventListener("click", createCalendarEvent);
+            // Open the event in the default calendar application
+            window.open(dataURI);
+        }
 
-// Call the function to create the calendar event
-createCalendarEvent();
-
+        // Add event listener to the button
+        document.getElementById("createEventButton").addEventListener("click", createCalendarEvent);
     </script>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
