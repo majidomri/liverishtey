@@ -195,39 +195,26 @@
                 },
             };
         </script>
-        <script>
+         <script>
         function createCalendarEvent() {
             // Define event details
             const eventName = "Hey are you looking for Matrimonial Profiles/ Rishtey?";
-            const eventDescription = `"Hey are you looking for Matrimonial Profiles/ Rishtey? Watch our LiveRishtey Show at www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526"`;
+            const eventDescription = "Hey are you looking for Matrimonial Profiles/ Rishtey? Watch our LiveRishtey Show at www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526";
             const eventTimezone = "Asia/Kolkata"; // IST timezone
             const eventStartTime = new Date(); // Today's date
             eventStartTime.setHours(17, 0, 0); // Set event time to 5:00 PM IST
+            const eventEndTime = new Date(eventStartTime);
+            eventEndTime.setHours(eventEndTime.getHours() + 1); // Event duration is 1 hour
 
-            // Convert event start time to UTC
-            const utcEventStartTime = eventStartTime.toISOString().replace(/-/g, "").replace(/:/g, "").slice(0, -5) + "Z";
+            // Convert event start and end time to UTC strings
+            const utcEventStartTime = eventStartTime.toISOString().replace(/[-:]/g, "").slice(0, -5) + "Z";
+            const utcEventEndTime = eventEndTime.toISOString().replace(/[-:]/g, "").slice(0, -5) + "Z";
 
-            // Define event duration (in minutes)
-            const eventDuration = 60 * 24; // 24 hours
+            // Generate Google Calendar URL with event details
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventName)}&dates=${utcEventStartTime}/${utcEventEndTime}&details=${encodeURIComponent(eventDescription)}&location=&sf=true&output=xml`;
 
-            // Define event notifications (in minutes before event start time)
-            const notifications = [-15, -10, -1];
-
-            // Generate event text with notifications
-            let eventText = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//EasyMatri//Calendar Event//EN\nBEGIN:VEVENT\n`;
-            eventText += `SUMMARY:${eventName}\nDESCRIPTION:${eventDescription}\n`;
-            eventText += `DTSTART;TZID=${eventTimezone}:${utcEventStartTime}\n`;
-            eventText += `DURATION:PT${eventDuration}M\n`;
-            for (const notification of notifications) {
-                eventText += `BEGIN:VALARM\nACTION:DISPLAY\nDESCRIPTION:${eventName}\nTRIGGER:-PT${-notification}M\nEND:VALARM\n`;
-            }
-            eventText += `END:VEVENT\nEND:VCALENDAR`;
-
-            // Generate data URI for the event text
-            const dataURI = "data:text/calendar;charset=utf-8," + encodeURIComponent(eventText);
-
-            // Open the event in the default calendar application
-            window.open(dataURI);
+            // Open the URL in a new tab
+            window.open(googleCalendarUrl, "_blank");
         }
 
         // Add event listener to the button
@@ -384,18 +371,6 @@
                                         </p>
                                     </a>
                                     <button onclick="createCalendarEvent()" class="relative inline-block w-80 mx-auto p-3 rounded sm:w-auto group h-11 bg-white before:transition before:duration-300 active:before:scale-90 focus:before:scale-90 focus:before:opacity-75 hover:before:scale-100 hover:before:opacity-100"> Add to your Calendar
-                                       <span class="mr-3"><svg class="w-6 h-6"
-                                                    enable-background="new 0 0 455.731 455.731" fill="none"
-                                                    stroke="currentColor" version="1.1" viewBox="0 0 455.73 455.73"
-                                                    xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
-                                                    <g fill="#fff">
-                                                        <path
-                                                            d="m68.494 387.41 22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 0-87.765 71.402-159.17 159.17-159.17s159.17 71.402 159.17 159.17-71.401 159.17-159.17 159.17c-27.347 0-54.125-7-77.814-20.292l-81.763 21.047zm85.943-50.004 4.872 2.975c20.654 12.609 44.432 19.274 68.762 19.274 72.877 0 132.17-59.29 132.17-132.17s-59.289-132.17-132.17-132.17-132.17 59.29-132.17 132.17c0 25.393 7.217 50.052 20.869 71.311l3.281 5.109-12.855 45.658 47.238-12.16z" />
-                                                        <path
-                                                            d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
-                                                    </g>
-                                                </svg>
-                                       </span>
                                     </button>
                                 </div>
                                 
