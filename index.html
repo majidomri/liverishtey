@@ -1,844 +1,702 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0 shrink-to-fit=no">
-        <meta name="robots" content="index, follow" />
-        <meta property="og:image" content="">
-        <meta property="og:image:width" content="1280">
-        <meta property="og:image:height" content="640">
-        <meta property="og:image:type" content="image/webp">
-        <meta property="og:url" content="https://liverishtey.com">
-        <meta property="og:title" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
-        <meta property="og:description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@easymatriofficial">
-        <meta name="twitter:title" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
-        <meta name="twitter:description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service.">
-        <meta name="twitter:image" content="">
-        <title>LiveRishtey</title>
-        <meta name="description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service.">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon">
-        <link rel="canonical" href="https://liverishtey.com/" itemprop="URL">
-        <link rel="preload" as="style" href="./app-92cb0ebe.css">
-        <link rel="preload" as="style" href="./app-e003ed48.css">
-        <link rel="stylesheet" href="./app-92cb0ebe.css">
-        <link rel="stylesheet" href="./app-e003ed48.css">
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
-
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            inter: ['Inter', 'sans-serif'],
-                        },
-                        animation: {
-                            'infinite-scroll': 'infinite-scroll 25s linear infinite',
-                            'text-slide-2': 'text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-3': 'text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-4': 'text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-5': 'text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-6': 'text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-7': 'text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                            'text-slide-8': 'text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite',
-                        },
-                        keyframes: {
-                            'infinite-scroll': {
-                                from: { transform: 'translateX(0)' },
-                                to: { transform: 'translateX(-100%)' },
-                            },
-                            'text-slide-2': {
-                                '0%, 40%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '50%, 90%': {
-                                    transform: 'translateY(-33.33%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-66.66%)',
-                                },
-                            },
-                            'text-slide-3': {
-                                '0%, 26.66%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '33.33%, 60%': {
-                                    transform: 'translateY(-25%)',
-                                },
-                                '66.66%, 93.33%': {
-                                    transform: 'translateY(-50%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-75%)',
-                                },
-                            },
-                            'text-slide-4': {
-                                '0%, 20%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '25%, 45%': {
-                                    transform: 'translateY(-20%)',
-                                },
-                                '50%, 70%': {
-                                    transform: 'translateY(-40%)',
-                                },
-                                '75%, 95%': {
-                                    transform: 'translateY(-60%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-80%)',
-                                },
-                            },
-                            'text-slide-5': {
-                                '0%, 16%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '20%, 36%': {
-                                    transform: 'translateY(-16.66%)',
-                                },
-                                '40%, 56%': {
-                                    transform: 'translateY(-33.33%)',
-                                },
-                                '60%, 76%': {
-                                    transform: 'translateY(-50%)',
-                                },
-                                '80%, 96%': {
-                                    transform: 'translateY(-66.66%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-83.33%)',
-                                },
-                            },
-                            'text-slide-6': {
-                                '0%, 13.33%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '16.66%, 30%': {
-                                    transform: 'translateY(-14.28%)',
-                                },
-                                '33.33%, 46.66%': {
-                                    transform: 'translateY(-28.57%)',
-                                },
-                                '50%, 63.33%': {
-                                    transform: 'translateY(-42.85%)',
-                                },
-                                '66.66%, 80%': {
-                                    transform: 'translateY(-57.14%)',
-                                },
-                                '83.33%, 96.66%': {
-                                    transform: 'translateY(-71.42%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-85.71%)',
-                                },
-                            },
-                            'text-slide-7': {
-                                '0%, 11.43%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '14.28%, 25.71%': {
-                                    transform: 'translateY(-12.5%)',
-                                },
-                                '28.57%, 40%': {
-                                    transform: 'translateY(-25%)',
-                                },
-                                '42.85%, 54.28%': {
-                                    transform: 'translateY(-37.5%)',
-                                },
-                                '57.14%, 68.57%': {
-                                    transform: 'translateY(-50%)',
-                                },
-                                '71.42%, 82.85%': {
-                                    transform: 'translateY(-62.5%)',
-                                },
-                                '85.71%, 97.14%': {
-                                    transform: 'translateY(-75%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-87.5%)',
-                                },
-                            },
-                            'text-slide-8': {
-                                '0%, 10%': {
-                                    transform: 'translateY(0%)',
-                                },
-                                '12.5%, 22.5%': {
-                                    transform: 'translateY(-11.11%)',
-                                },
-                                '25%, 35%': {
-                                    transform: 'translateY(-22.22%)',
-                                },
-                                '37.5%, 47.5%': {
-                                    transform: 'translateY(-33.33%)',
-                                },
-                                '50%, 60%': {
-                                    transform: 'translateY(-44.44%)',
-                                },
-                                '62.5%, 72.5%': {
-                                    transform: 'translateY(-55.55%)',
-                                },
-                                '75%, 85%': {
-                                    transform: 'translateY(-66.66%)',
-                                },
-                                '87.5%, 97.5%': {
-                                    transform: 'translateY(-77.77%)',
-                                },
-                                '100%': {
-                                    transform: 'translateY(-88.88%)',
-                                },
-                            }
-                        },
-                    },
-                },
-            };
-        </script>
-        <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Event",
-        "name": "Live Rishtey Premiere Show",
-        "description": "Play with me!",
-        "startDate": "2024-04-14T17:00:00+05:30",
-        "endDate": "2024-04-14T17:30:00+05:30",
-        "location": {
-            "@type": "VirtualLocation",
-            "name": "YouTube Channel"
-        },
-        "organizer": {
-            "@type": "Organization",
-            "name": "Easy Matri",
-            "email": "easymatri.co.in@gmail.com"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": "https://www.youtube.com/@easymatri/streams"
-        }
-    }
-    </script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0 shrink-to-fit=no">
+    <meta name="robots" content="index, follow" />
+    <meta property="og:image" content="">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:url" content="https://liverishtey.com">
+    <meta property="og:title" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
+    <meta property="og:description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@easymatriofficial">
+    <meta name="twitter:title" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service">
+    <meta name="twitter:description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service.">
+    <meta name="twitter:image" content="">
+    <title>LiveRishtey</title>
+    <meta name="description" content="Easiest Matrimonial, Matchmaking & Marriage Profile Search Service.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon">
+    <link rel="canonical" href="https://liverishtey.com/" itemprop="URL">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="preload" as="style" href="./app-92cb0ebe.css">
+    <link rel="preload" as="style" href="./app-e003ed48.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
     <script>
-        function createCalendarEvent() {
-            // Define event details
-            const eventName = "Hey are you looking for Matrimonial Profiles/ Rishtey?";
-            const eventDescription = "Hey are you looking for Matrimonial Profiles/ Rishtey? Watch our LiveRishtey Show at www.youtube.com/@easymatri/streams Register your details with us: WhatsaApp +919429692526";
-            const eventTimezone = "Asia/Kolkata"; // IST timezone
-            const eventStartTime = new Date(); // Today's date
-            eventStartTime.setHours(17, 0, 0); // Set event time to 5:00 PM IST
-            const eventEndTime = new Date(eventStartTime);
-            eventEndTime.setHours(eventEndTime.getHours() + 1); // Event duration is 1 hour
-
-            // Convert event start and end time to UTC strings
-            const utcEventStartTime = eventStartTime.toISOString().replace(/[-:]/g, "").slice(0, -5) + "Z";
-            const utcEventEndTime = eventEndTime.toISOString().replace(/[-:]/g, "").slice(0, -5) + "Z";
-
-            // Generate Google Calendar URL with event details
-            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventName)}&dates=${utcEventStartTime}/${utcEventEndTime}&details=${encodeURIComponent(eventDescription)}&location=&sf=true&output=xml`;
-
-            // Open the URL in a new tab
-            window.open(googleCalendarUrl, "_blank");
-        }
-
-        // Add event listener to the button
-        document.getElementById("createEventButton").addEventListener("click", createCalendarEvent);
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'text-slide-2': 'text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-3': 'text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-4': 'text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-5': 'text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-6': 'text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-7': 'text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+              'text-slide-8': 'text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            },
+            keyframes: {
+              'text-slide-2': {
+                '0%, 40%': {
+                  transform: 'translateY(0%)',
+                },
+                '50%, 90%': {
+                  transform: 'translateY(-33.33%)',
+                },
+                '100%': {
+                  transform: 'translateY(-66.66%)',
+                },
+              },
+              'text-slide-3': {
+                '0%, 26.66%': {
+                  transform: 'translateY(0%)',
+                },
+                '33.33%, 60%': {
+                  transform: 'translateY(-25%)',
+                },
+                '66.66%, 93.33%': {
+                  transform: 'translateY(-50%)',
+                },
+                '100%': {
+                  transform: 'translateY(-75%)',
+                },
+              },
+              'text-slide-4': {
+                '0%, 20%': {
+                  transform: 'translateY(0%)',
+                },
+                '25%, 45%': {
+                  transform: 'translateY(-20%)',
+                },
+                '50%, 70%': {
+                  transform: 'translateY(-40%)',
+                },
+                '75%, 95%': {
+                  transform: 'translateY(-60%)',
+                },
+                '100%': {
+                  transform: 'translateY(-80%)',
+                },
+              },
+              'text-slide-5': {
+                '0%, 16%': {
+                  transform: 'translateY(0%)',
+                },
+                '20%, 36%': {
+                  transform: 'translateY(-16.66%)',
+                },
+                '40%, 56%': {
+                  transform: 'translateY(-33.33%)',
+                },
+                '60%, 76%': {
+                  transform: 'translateY(-50%)',
+                },
+                '80%, 96%': {
+                  transform: 'translateY(-66.66%)',
+                },
+                '100%': {
+                  transform: 'translateY(-83.33%)',
+                },
+              },
+              'text-slide-6': {
+                '0%, 13.33%': {
+                  transform: 'translateY(0%)',
+                },
+                '16.66%, 30%': {
+                  transform: 'translateY(-14.28%)',
+                },
+                '33.33%, 46.66%': {
+                  transform: 'translateY(-28.57%)',
+                },
+                '50%, 63.33%': {
+                  transform: 'translateY(-42.85%)',
+                },
+                '66.66%, 80%': {
+                  transform: 'translateY(-57.14%)',
+                },
+                '83.33%, 96.66%': {
+                  transform: 'translateY(-71.42%)',
+                },
+                '100%': {
+                  transform: 'translateY(-85.71%)',
+                },
+              },
+              'text-slide-7': {
+                '0%, 11.43%': {
+                  transform: 'translateY(0%)',
+                },
+                '14.28%, 25.71%': {
+                  transform: 'translateY(-12.5%)',
+                },
+                '28.57%, 40%': {
+                  transform: 'translateY(-25%)',
+                },
+                '42.85%, 54.28%': {
+                  transform: 'translateY(-37.5%)',
+                },
+                '57.14%, 68.57%': {
+                  transform: 'translateY(-50%)',
+                },
+                '71.42%, 82.85%': {
+                  transform: 'translateY(-62.5%)',
+                },
+                '85.71%, 97.14%': {
+                  transform: 'translateY(-75%)',
+                },
+                '100%': {
+                  transform: 'translateY(-87.5%)',
+                },
+              },
+              'text-slide-8': {
+                '0%, 10%': {
+                  transform: 'translateY(0%)',
+                },
+                '12.5%, 22.5%': {
+                  transform: 'translateY(-11.11%)',
+                },
+                '25%, 35%': {
+                  transform: 'translateY(-22.22%)',
+                },
+                '37.5%, 47.5%': {
+                  transform: 'translateY(-33.33%)',
+                },
+                '50%, 60%': {
+                  transform: 'translateY(-44.44%)',
+                },
+                '62.5%, 72.5%': {
+                  transform: 'translateY(-55.55%)',
+                },
+                '75%, 85%': {
+                  transform: 'translateY(-66.66%)',
+                },
+                '87.5%, 97.5%': {
+                  transform: 'translateY(-77.77%)',
+                },
+                '100%': {
+                  transform: 'translateY(-88.88%)',
+                },
+              }
+            },
+          },
+        },
+      };
     </script>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
 
-            .strike p {
-                /* border-radius: 5px;
-              box-shadow: 0px 0px 10px #29abe2; */
-            }
+      .hero {
+        font-family: 'Urbanist', sans-serif;
+      }
 
-            .hero {
-                font-family: 'Urbanist', sans-serif;
-            }
+      .video-wrapper {
+        aspect-ratio: 16/9;
+      }
 
-            .video-wrapper {
-                aspect-ratio: 16/9;
-            }
+      .video-wrapper iframe {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
 
-            .video-wrapper iframe {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-    </head>
-
-    <body>
-        <main id="app" class="relative flex flex-col min-h-screen bg-white font-roboto" data-v-app="">
-            <header class="absolute inset-x-0 top-0 z-40 w-full">
-                <nav class="container relative flex items-center justify-between px-4 py-6 mx-auto sm:px-6"
-                    aria-label="Global">
-                    <div class="inline-flex items-center justify-between w-full lg:w-auto"><a
-                            href="https://liverishtey.com/" class="inline-flex items-center"><span
-                                class="sr-only">LiveRishtey</span><svg class="w-auto h-6 ml-2 text-red-600"
-                                enable-background="new 0 0 512 512" fill="currentColor" viewBox="0 0 512 512"
-                                xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
-                                <path
-                                    d="m354.08 176.93c-37.031 0-71.12 12.818-98.079 34.241-26.959-21.424-61.048-34.241-98.079-34.241-87.079 0-157.92 70.843-157.92 157.92s70.842 157.92 157.92 157.92c37.031 0 71.12-12.818 98.079-34.241 26.959 21.424 61.048 34.241 98.079 34.241 87.079 0 157.92-70.843 157.92-157.92s-70.842-157.92-157.92-157.92zm-196.16 282.45c-68.667 0-124.53-55.864-124.53-124.53 0-68.665 55.864-124.53 124.53-124.53 27.719 0 53.349 9.108 74.064 24.482-22.377 27.258-35.826 62.11-35.826 100.05 0 37.937 13.45 72.789 35.827 100.05-20.714 15.375-46.345 24.483-74.064 24.483zm71.628-124.53c0-28.883 9.886-55.5 26.45-76.648 16.563 21.148 26.45 47.764 26.45 76.648s-9.887 55.5-26.45 76.648c-16.563-21.149-26.45-47.766-26.45-76.648zm124.53 124.53c-27.719 0-53.35-9.108-74.064-24.483 22.377-27.258 35.827-62.11 35.827-100.05 0-37.936-13.449-72.789-35.826-100.05 20.714-15.375 46.345-24.483 74.064-24.483 68.665 0 124.53 55.864 124.53 124.53-1e-3 68.668-55.865 124.53-124.53 124.53z" />
-                                <path
-                                    d="m221.44 150.23c10.507 8.127 24.863 17.46 25.469 17.853l9.09 5.9 9.09-5.9c0.606-0.394 14.96-9.726 25.469-17.853 24.203-18.719 51.985-44.085 51.985-74.342 0-31.246-25.421-56.667-56.667-56.667-10.651 0-20.988 3.013-29.876 8.528-8.888-5.516-19.224-8.528-29.876-8.528-31.246 0-56.667 25.421-56.667 56.667-2e-3 30.257 27.78 55.623 51.983 74.342zm4.683-97.618c6.635 0 12.977 2.853 17.399 7.826l12.477 14.035 12.477-14.034c4.422-4.973 10.764-7.826 17.399-7.826 12.834 0 23.276 10.441 23.276 23.276 0 11.777-13.129 27.903-39.022 47.929-4.383 3.389-9.694 7.131-14.13 10.171-4.437-3.039-9.748-6.781-14.13-10.171-25.893-20.026-39.022-36.152-39.022-47.929 0-12.835 10.441-23.277 23.276-23.277z" />
-                            </svg><span
-                                class="ml-2 text-xl font-bold tracking-wide text-red-600 uppercase">liverishtey.com</span></a>
-
-                    </div>
-
-                </nav>
-            </header>
-            <div class="flex flex-col flex-1">
-                <section
-                    class="relative before:scale-y-110 before:absolute before:mx-auto before:inset-x-0 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-gray-950/10 ">
-                    <div class="relative overflow-hidden pt-28 sm:pt-32 bg-gray-50">
-                        <div aria-hidden="true"
-                            class="absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-b from-transparent to-gray-50">
-                        </div>
-                        <div class="absolute inset-x-0 -top-20"><svg
-                                class="min-w-[80rem] -translate-x-60 md:translate-x-0 mx-auto w-full -scale-y-100 contrast-150 opacity-50"
-                                viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_1739_2)">
-                                    <g filter="url(#filter0_f_1739_2)">
-                                        <ellipse cx="987.203" cy="967.25" rx="581" ry="356.5"
-                                            transform="rotate(8.47676 987.203 967.25)" fill="#9641C1"></ellipse>
-                                    </g>
-                                    <g filter="url(#filter1_f_1739_2)">
-                                        <ellipse cx="991.907" cy="1000.77" rx="454.5" ry="280.5"
-                                            transform="rotate(11.69 991.907 1000.77)" fill="#FF94C8"></ellipse>
-                                    </g>
-                                    <g filter="url(#filter2_f_1739_2)">
-                                        <ellipse cx="405" cy="1050" rx="448" ry="332" fill="#007FEC"></ellipse>
-                                    </g>
-                                    <g filter="url(#filter3_f_1739_2)">
-                                        <ellipse cx="779" cy="985.5" rx="259" ry="204.5" fill="#FFE8AE"></ellipse>
-                                    </g>
-                                </g>
-                                <defs>
-                                    <filter id="filter0_f_1739_2" x="110.117" y="304.308" width="1754.18"
-                                        height="1325.88" filterUnits="userSpaceOnUse"
-                                        color-interpolation-filters="sRGB">
-                                        <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
-                                        <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                            result="shape"></feblend>
-                                        <fegaussianblur stdDeviation="150" result="effect1_foregroundBlur_1739_2">
-                                        </fegaussianblur>
-                                    </filter>
-                                    <filter id="filter1_f_1739_2" x="343.172" y="510.984" width="1297.47"
-                                        height="979.573" filterUnits="userSpaceOnUse"
-                                        color-interpolation-filters="sRGB">
-                                        <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
-                                        <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                            result="shape"></feblend>
-                                        <fegaussianblur stdDeviation="100" result="effect1_foregroundBlur_1739_2">
-                                        </fegaussianblur>
-                                    </filter>
-                                    <filter id="filter2_f_1739_2" x="-343" y="418" width="1496" height="1264"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
-                                        <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                            result="shape"></feblend>
-                                        <fegaussianblur stdDeviation="150" result="effect1_foregroundBlur_1739_2">
-                                        </fegaussianblur>
-                                    </filter>
-                                    <filter id="filter3_f_1739_2" x="320" y="581" width="918" height="809"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
-                                        <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
-                                            result="shape"></feblend>
-                                        <fegaussianblur stdDeviation="100" result="effect1_foregroundBlur_1739_2">
-                                        </fegaussianblur>
-                                    </filter>
-                                    <clippath id="clip0_1739_2">
-                                        <rect width="1440" height="900" fill="white"></rect>
-                                    </clippath>
-                                </defs>
-                            </svg></div>
-                        <div class="relative px-6 mx-auto max-w-7xl">
-                            <div class="relative z-10 mx-auto text-center sm:pb-8 sm:w-4/5 lg:w-8/12 lg:pb-20">
-                                <div class="relative mx-auto overflow-hidden rounded-full h-max w-max">
-                                    <div class="absolute inset-0 w-4 h-16 animate-slide">
-                                        <div aria-hidden="true"
-                                            class="absolute inset-0 rotate-[-20deg] scale-y-125 bg-gradient-to-r from-transparent via-white/30">
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="border relative border-blue-200 border-whit/50 inline-flex items-center p-0.5 pl-2.5 rounded-full gap-x-2 border-white/40  bg-gray-950/20 before:scale-y-110 before:absolute before:inset-x-4 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-yellow-50 before:to-transparent before:h-px before:w-3/5">
-                                        <span class="text-sm tracking-wide text-white">Introducing</span><span
-                                            class="px-2 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-gray-950/20 border border-white/30 rounded-full">Matrimonial
-                                            Seach Engine</span>
-                                    </div>
-                                </div>
-                                <h1 class="mt-8 text-3xl font-bold sm:text-4xl text-blue-950 lg:text-5xl xl:text-6xl">
-                                    When searching is easy, <span class="text-red-600">marriage is easy!</span></h1>
-                                <p class="mt-5 text-gray-700 lg:mt-8 sm:text-lg">Just check out our
-                                    LiveRishtey Live Premier once.
-                                </p>
-                                <div class="items-center my-6 gap-x-4 lg:gap-x-6 sm:flex sm: sm:justify-center lg:mt-8">
-
-                                    <a href="https://chat.whatsapp.com/HuZZnXHiyAgKasTqRHOTSY"
-                                        class="relative inline-block w-80 mx-auto p-3 rounded sm:w-auto group h-11 bg-gradient-to-r from-purple-600 to-sky-500 before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-400 before:to-sky-400 before:scale-75 before:opacity-50 before:rounded-md before:blur-lg before:transition before:duration-300 active:before:scale-90 focus:before:scale-90 focus:before:opacity-75 hover:before:scale-100 hover:before:opacity-100">
-                                        <p
-                                            class="relative flex justify-center h-full text-sm font-medium items-center text-white tracking-wide  px-[calc(1.5rem-1px)] rounded-[calc(0.5rem-1px)] transition duration-300">
-                                            <span class="mr-3"><svg class="w-6 h-6"
-                                                    enable-background="new 0 0 455.731 455.731" fill="none"
-                                                    stroke="currentColor" version="1.1" viewBox="0 0 455.73 455.73"
-                                                    xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
-                                                    <g fill="#fff">
-                                                        <path
-                                                            d="m68.494 387.41 22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 0-87.765 71.402-159.17 159.17-159.17s159.17 71.402 159.17 159.17-71.401 159.17-159.17 159.17c-27.347 0-54.125-7-77.814-20.292l-81.763 21.047zm85.943-50.004 4.872 2.975c20.654 12.609 44.432 19.274 68.762 19.274 72.877 0 132.17-59.29 132.17-132.17s-59.289-132.17-132.17-132.17-132.17 59.29-132.17 132.17c0 25.393 7.217 50.052 20.869 71.311l3.281 5.109-12.855 45.658 47.238-12.16z" />
-                                                        <path
-                                                            d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
-                                                    </g>
-                                                </svg></span>
-                                            Join our Community
-                                        </p>
-                                    </a>
-                                   
-                                    <add-to-calendar-button 
-        name="Live Rishtey Premiere Show"
-  description="Watch our Live Rishtey Premiere Show.  Event Place : YouTube Channel https://www.youtube.com/@easymatri/streams  One Stop to get Matched.😎 For Registration Please Contact us: +91 9429692526"
-  startDate="2024-04-14"
-  startTime="05:00"
-  endDate="2024-04-14"
-  endTime="05:30"
-  timeZone="Asia/Calcutta"
-  location="YouTube Channel"
-  organizer="Easy Matri | easymatri.co.in@gmail.com"
-  recurrence="daily"
-recurrence_interval="1"
-  availability="busy"
-  options="'Outlook.com','iCal','Apple','Google','Microsoft365'"
-  listStyle="overlay"
-  trigger="click"
-  hideIconList
-        hideTextLabelButton
-        buttonsList
-        hideBackground
-        hideCheckmark
-        size="10"
-        lightMode="system"
-        pastDateHandling="hide"
-    ></add-to-calendar-button>
-    
-
-                                </div>
-                                
-                                <div class="relative mb-6" style="padding-top: 56.25%">
-                                    <iframe class="absolute inset-0 w-full aspect-video"
-                                        src="https://www.youtube.com/embed/qr8abvqPm2Y" title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-                <section>
-                    <main class="relative min-h-full flex flex-col justify-center bg-slate-900 overflow-hidden">
-                        <div class="w-full max-w-7xl mx-auto px-4 md:px-6 py-6">
-                            <div>
-                                <p class="text-center text-yellow-400 font-medium text-3xl">
-                                    Better than
-                                </p>
-                            </div>
-                            <div class="text-center">
-
-                                <!-- Logo Carousel animation -->
-                                <div x-data="{}" x-init="$nextTick(() => {
-                          let ul = $refs.logos;
-                          ul.insertAdjacentHTML('afterend', ul.outerHTML);
-                          ul.nextSibling.setAttribute('aria-hidden', 'true');
-                      })" class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                                    <ul x-ref="logos"
-                                        class="flex items-center justify-center md:justify-start [&_li]:mx-6 [&_img]:max-w-none animate-infinite-scroll">
-                                        <li>
-                                            <img class="w-auto h-36" src="./facebook.svg" alt="Facebook" />
-                                        </li>
-                                        <li>
-                                            <img class="w-auto h-36" src="./disney.svg" alt="Disney" />
-                                        </li>
-                                        <li>
-                                            <img class="w-auto h-36" src="./airbnb.svg" alt="Airbnb" />
-                                        </li>
-                                        <li>
-                                            <img class="w-auto h-36" src="./apple.svg" alt="Apple" />
-                                        </li>
-                                        <li>
-                                            <img class="w-auto h-36" src="./spark.svg" alt="Spark" />
-                                        </li>
-                                        <li>
-                                            <img class="w-auto h-36" src="./samsung.svg" alt="Samsung" />
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- End: Logo Carousel animation -->
-                            </div>
-                        </div>
-                    </main>
-                </section>
+  <body>
+    <main class="relative flex flex-col min-h-screen bg-white font-roboto" data-v-app="">
+      <header class="absolute inset-x-0 top-0 z-40 w-full">
+        <nav class="container relative flex items-center justify-between px-4 py-6 mx-auto sm:px-6" aria-label="Global">
+          <div class="inline-flex items-center justify-between w-full lg:w-auto"><a href="https://liverishtey.com/"
+              class="inline-flex items-center"><span class="sr-only">LiveRishtey</span><svg
+                class="w-auto h-6 ml-2 text-red-600" enable-background="new 0 0 512 512" fill="currentColor"
+                viewBox="0 0 512 512" xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
+                <path
+                  d="m354.08 176.93c-37.031 0-71.12 12.818-98.079 34.241-26.959-21.424-61.048-34.241-98.079-34.241-87.079 0-157.92 70.843-157.92 157.92s70.842 157.92 157.92 157.92c37.031 0 71.12-12.818 98.079-34.241 26.959 21.424 61.048 34.241 98.079 34.241 87.079 0 157.92-70.843 157.92-157.92s-70.842-157.92-157.92-157.92zm-196.16 282.45c-68.667 0-124.53-55.864-124.53-124.53 0-68.665 55.864-124.53 124.53-124.53 27.719 0 53.349 9.108 74.064 24.482-22.377 27.258-35.826 62.11-35.826 100.05 0 37.937 13.45 72.789 35.827 100.05-20.714 15.375-46.345 24.483-74.064 24.483zm71.628-124.53c0-28.883 9.886-55.5 26.45-76.648 16.563 21.148 26.45 47.764 26.45 76.648s-9.887 55.5-26.45 76.648c-16.563-21.149-26.45-47.766-26.45-76.648zm124.53 124.53c-27.719 0-53.35-9.108-74.064-24.483 22.377-27.258 35.827-62.11 35.827-100.05 0-37.936-13.449-72.789-35.826-100.05 20.714-15.375 46.345-24.483 74.064-24.483 68.665 0 124.53 55.864 124.53 124.53-1e-3 68.668-55.865 124.53-124.53 124.53z" />
+                <path
+                  d="m221.44 150.23c10.507 8.127 24.863 17.46 25.469 17.853l9.09 5.9 9.09-5.9c0.606-0.394 14.96-9.726 25.469-17.853 24.203-18.719 51.985-44.085 51.985-74.342 0-31.246-25.421-56.667-56.667-56.667-10.651 0-20.988 3.013-29.876 8.528-8.888-5.516-19.224-8.528-29.876-8.528-31.246 0-56.667 25.421-56.667 56.667-2e-3 30.257 27.78 55.623 51.983 74.342zm4.683-97.618c6.635 0 12.977 2.853 17.399 7.826l12.477 14.035 12.477-14.034c4.422-4.973 10.764-7.826 17.399-7.826 12.834 0 23.276 10.441 23.276 23.276 0 11.777-13.129 27.903-39.022 47.929-4.383 3.389-9.694 7.131-14.13 10.171-4.437-3.039-9.748-6.781-14.13-10.171-25.893-20.026-39.022-36.152-39.022-47.929 0-12.835 10.441-23.277 23.276-23.277z" />
+              </svg><span class="ml-2 text-xl font-bold tracking-wide text-red-600 uppercase">liverishtey.com</span></a>
+          </div>
+        </nav>
+      </header>
+      <div class="flex flex-col flex-1">
+        <section
+          class="relative before:scale-y-110 before:absolute before:mx-auto before:inset-x-0 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-gray-950/10 ">
+          <div class="relative overflow-hidden pt-28 sm:pt-32 bg-gray-50">
+            <div aria-hidden="true"
+              class="absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-b from-transparent to-gray-50">
             </div>
-            <section>
-                <div class="px-4 py-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-                    <div class="max-w-xl mb-3 md:mx-auto sm:text-center lg:max-w-2xl">
-                        <div>
-                            <p
-                                class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                                Check out our features
-                            </p>
-                        </div>
-                        <h2
-                            class="max-w-lg mb-3 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-
-                            What make us different...
-                        </h2>
+            <div class="absolute inset-x-0 -top-20"><svg
+                class="min-w-[80rem] -translate-x-60 md:translate-x-0 mx-auto w-full -scale-y-100 contrast-150 opacity-50"
+                viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_1739_2)">
+                  <g filter="url(#filter0_f_1739_2)">
+                    <ellipse cx="987.203" cy="967.25" rx="581" ry="356.5" transform="rotate(8.47676 987.203 967.25)"
+                      fill="#9641C1"></ellipse>
+                  </g>
+                  <g filter="url(#filter1_f_1739_2)">
+                    <ellipse cx="991.907" cy="1000.77" rx="454.5" ry="280.5" transform="rotate(11.69 991.907 1000.77)"
+                      fill="#FF94C8"></ellipse>
+                  </g>
+                  <g filter="url(#filter2_f_1739_2)">
+                    <ellipse cx="405" cy="1050" rx="448" ry="332" fill="#007FEC"></ellipse>
+                  </g>
+                  <g filter="url(#filter3_f_1739_2)">
+                    <ellipse cx="779" cy="985.5" rx="259" ry="204.5" fill="#FFE8AE"></ellipse>
+                  </g>
+                </g>
+                <defs>
+                  <filter id="filter0_f_1739_2" x="110.117" y="304.308" width="1754.18" height="1325.88"
+                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                    <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                    <fegaussianblur stdDeviation="150" result="effect1_foregroundBlur_1739_2">
+                    </fegaussianblur>
+                  </filter>
+                  <filter id="filter1_f_1739_2" x="343.172" y="510.984" width="1297.47" height="979.573"
+                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                    <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                    <fegaussianblur stdDeviation="100" result="effect1_foregroundBlur_1739_2">
+                    </fegaussianblur>
+                  </filter>
+                  <filter id="filter2_f_1739_2" x="-343" y="418" width="1496" height="1264" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                    <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                    <fegaussianblur stdDeviation="150" result="effect1_foregroundBlur_1739_2">
+                    </fegaussianblur>
+                  </filter>
+                  <filter id="filter3_f_1739_2" x="320" y="581" width="918" height="809" filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB">
+                    <feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+                    <feblend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend>
+                    <fegaussianblur stdDeviation="100" result="effect1_foregroundBlur_1739_2">
+                    </fegaussianblur>
+                  </filter>
+                  <clippath id="clip0_1739_2">
+                    <rect width="1440" height="900" fill="white"></rect>
+                  </clippath>
+                </defs>
+              </svg></div>
+            <div class="relative px-6 mx-auto max-w-7xl">
+              <div class="relative z-10 mx-auto text-center sm:pb-8 sm:w-4/5 lg:w-8/12 lg:pb-20">
+                <div class="relative mx-auto overflow-hidden rounded-full h-max w-max">
+                  <div class="absolute inset-0 w-4 h-16 animate-slide">
+                    <div aria-hidden="true"
+                      class="absolute inset-0 rotate-[-20deg] scale-y-125 bg-gradient-to-r from-transparent via-white/30">
                     </div>
-
+                  </div>
+                  <div
+                    class="border relative border-blue-200 border-whit/50 inline-flex items-center p-0.5 pl-2.5 rounded-full gap-x-2 border-white/40  bg-gray-950/20 before:scale-y-110 before:absolute before:inset-x-4 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-yellow-50 before:to-transparent before:h-px before:w-3/5">
+                    <span class="text-sm tracking-wide text-white">Introducing</span><span
+                      class="px-2 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-gray-950/20 border border-white/30 rounded-full">Matrimonial
+                      Seach Engine</span>
+                  </div>
                 </div>
-                <!-- second -->
-                <div class="px-4 py-6 mx-auto space-y-3sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-                    <div class="grid gap-8 row-gap-5 md:grid-cols-2">
-                        <div
-                            class="relative p-3 overflow-hidden transition duration-300 transform border rounded shadow-sm hover:scale-105 group hover:shadow-xl">
-                            <p class="ml-3 mx-auto text-center font-bold text-2xl text-red-600">
-                                Common Problems
-                            </p>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200">Costly
-                                    and No Transparency</span>
-                            </div>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200 ">Waste
-                                    of Time or Time taking</span>
-                            </div>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200 ">Privacy
-                                    or Social Security Issues</span>
-                            </div>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200 ">Useless
-                                    or Worthless Preferences</span>
-                            </div>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200 ">Algorithms
-                                    and Targeting</span>
-                            </div>
-                            <div
-                                class="flex items-center p-2 transition-colors duration-200 group hover:bg-deep-purple-accent-400 hover:border-deep-purple-accent-400">
-                                <div class="mr-2">
-                                    <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400"
-                                        stroke="currentColor" viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
-                                        <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polygon>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-gray-800 transition-colors duration-200 ">False
-                                    Promises and Show off</span>
-                            </div>
-                        </div>
-                        <div
-                            class="flex flex-col items-center justify-center transition duration-300 transform border rounded shadow-sm hover:scale-105 group hover:shadow-xl">
-                            <!-- Sliding Text animation -->
-                            <div
-                                class="relative inline-flex items-center justify-center flex-wrap text-center font-extrabold text-3xl md:text-4xl text-slate-600">
-                                Live Rishtey Provides
-                                <span
-                                    class="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
-                                    <ul class="block animate-text-slide-5 text-left leading-tight [&_li]:block">
-                                        <li>Reasonable Cost!</li>
-                                        <li>Maximum Exposure</li>
-                                        <li>Secure & Fast</li>
-                                        <li>Realistic Filters</li>
-                                        <li>Fresh Profiles</li>
-                                        <li aria-hidden="true">100% Live Work</li>
-                                    </ul>
-                                </span>
-                            </div>
-                            <!-- End: Sliding Text animation -->
-                        </div>
-                    </div>
+                <h1 class="mt-8 text-3xl font-bold sm:text-4xl text-blue-950 lg:text-5xl xl:text-6xl">
+                  Perfect Life Partner comes from <span class="text-red-600">Perfect Search!</span></h1>
+                <p class="mt-5 px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">Exclusive &
+                  Personalised Matchmaking Live Rishtey Premier.
+                </p>
+                <div class="mb-3 space-x-0 md:space-x-2 md:mb-8 ">
+                  <a class="inline-flex items-center content-center justify-center w-full px-4 py-2 mb-2 mr-3 bg-green-600  text-white sm:w-auto sm:mb-0"
+                    href="https://www.mssg.me/shaadi" target="_blank"><svg class="w-5 h-5"
+                      enable-background="new 0 0 455.731 455.731" fill="none" stroke="currentColor" version="1.1"
+                      viewBox="0 0 455.73 455.73" xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
+                      <g fill="#fff">
+                        <path
+                          d="m68.494 387.41 22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 0-87.765 71.402-159.17 159.17-159.17s159.17 71.402 159.17 159.17-71.401 159.17-159.17 159.17c-27.347 0-54.125-7-77.814-20.292l-81.763 21.047zm85.943-50.004 4.872 2.975c20.654 12.609 44.432 19.274 68.762 19.274 72.877 0 132.17-59.29 132.17-132.17s-59.289-132.17-132.17-132.17-132.17 59.29-132.17 132.17c0 25.393 7.217 50.052 20.869 71.311l3.281 5.109-12.855 45.658 47.238-12.16z" />
+                        <path
+                          d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
+                      </g>
+                    </svg>
+                    Join our Community
+                  </a>
+                  <a class="inline-flex items-center justify-center content-center w-full mb-2 px-4 py-2 mr-3 bg-blue-600  text-white sm:w-auto sm:mb-0"
+                    href="tel:9429692526">
+                    Book a Demo
+                    <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                      fill="currentColor">
+                      <path fill-rule="evenodd"
+                        d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </a>
                 </div>
-
-            </section>
-            <section>
-                <div class="text-center my-6 flex items-center justify-center">
-                    <a href="https://wa.me/?text=I%27m%20inviting%20you%20to%20check%20https%3A%2F%2Fwww.liverishtey.com.%20This%20is%20a%20best%20place%20to%20get%20better%20proposals (rishtey).%0A%0AAlso%20Dont%20forget%20to%20Subscribe%20YouTube%20Channel%20for%20Live%20Streams%21%0Ahttps%3A%2F%2Fwww.youtube.com%2F%40easymatri"
-                        class="flex py-3 px-5 rounded-full text-white items-center bg-green-500 text-2xl">
-                        <span><svg class="w-8 h-8" enable-background="new 0 0 455.731 455.731" fill="none"
-                                stroke="currentColor" version="1.1" viewBox="0 0 455.73 455.73" xml:space="preserve"
-                                xmlns="https://www.w3.org/2000/svg">
-                                <g fill="#fff">
-                                    <path
-                                        d="m68.494 387.41 22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 0-87.765 71.402-159.17 159.17-159.17s159.17 71.402 159.17 159.17-71.401 159.17-159.17 159.17c-27.347 0-54.125-7-77.814-20.292l-81.763 21.047zm85.943-50.004 4.872 2.975c20.654 12.609 44.432 19.274 68.762 19.274 72.877 0 132.17-59.29 132.17-132.17s-59.289-132.17-132.17-132.17-132.17 59.29-132.17 132.17c0 25.393 7.217 50.052 20.869 71.311l3.281 5.109-12.855 45.658 47.238-12.16z" />
-                                    <path
-                                        d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
-                                </g>
-                            </svg></span>
-                        <span>Invite Friends</span>
-                    </a>
+                <div class="items-center text-center my-6 gap-x-6 lg:gap-x-9 sm:flex sm: justify-center lg:mt-6">
+                  <add-to-calendar-button name="Live Rishtey Premiere Show"
+                    description="Watch our Live Rishtey Premiere Show.  Event Place : YouTube Channel https://www.youtube.com/@easymatri/streams  One Stop to get Matched.😎 For Registration Please Contact us: +91 9429692526"
+                    name="[Reminder] Test the Add to Calendar Button" startDate="2024-04-20" startTime="10:15"
+                    endTime="23:30" timeZone="America/Los_Angeles"
+                    description="Check out the maybe easiest way to include Add to Calendar Buttons to your web projects:[br]→ [url]https://add-to-calendar-button.com/|Click here![/url]"
+                    options="'Apple','Google','iCal','Outlook.com','Yahoo'" buttonsList hideTextLabelButton
+                    buttonStyle="round" lightMode="bodyScheme"></add-to-calendar-button>
                 </div>
-            </section>
-            <section class="bg-red-900">
-                <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
-                    <div class="flex flex-col items-center justify-between lg:flex-row">
-                        <div class="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
-                            <div class="max-w-xl mb-6">
-                                <div>
-                                    <p
-                                        class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-red-600 uppercase rounded-full bg-yellow-300">
-                                        premiered
-                                    </p>
-                                </div>
-                                <h2
-                                    class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl sm:leading-none">
-                                    Check out our live video
-                                    <span class="inline-block text-yellow-300">Live Rishtey Premiere</span>
-                                </h2>
-                                <p class="text-base text-slate-200 md:text-lg">
-                                    We will live stream matrimonial proposals every Sunday, Tuesday, Thurday & Saturday
-                                    at 5:00 P.M
-                                    IST.
-                                    <br><span class="text-yellow-300">Don't forget to interact in live chat.</span>
-                                </p>
-                            </div>
-                            <div class="flex flex-col items-center md:flex-row">
-                                <a href="https://www.youtube.com/@easymatri/streams" target="_blank"
-                                    class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-slate-50 transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none">
-                                    <span class="mr-3">Watch Now</span>
-                                    <svg class="w-6" fill="#fff" viewBox="0 0 24 24">
-                                        <path
-                                            d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z">
-                                        </path>
-                                    </svg> </a>
-                            </div>
-                        </div>
-                        <div class="relative lg:w-1/2">
-                            <img class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-                                src="https://i.postimg.cc/bwyhLY0z/pexels.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
-                                alt="" />
-                            <a href="https://www.youtube.com/@easymatri/streams" target="_blank" aria-label="Play Video"
-                                class="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25">
-                                <div
-                                    class="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
-                                    <svg class="w-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z">
-                                        </path>
-                                    </svg>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                <div class="relative mb-6" style="padding-top: 56.25%">
+                  <iframe class="absolute inset-0 w-full aspect-video" src="https://www.youtube.com/embed/qr8abvqPm2Y"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
                 </div>
-            </section>
-            <div class="bg-white">
-                <div class="max-w-screen-xl px-0 mx-auto">
+                <div>
+                  <div class="max-w-screen-xl px-0 mx-auto">
                     <div class="flex flex-col sm:flex-row justify-between items-center  rounded-lg gap-4 p-4 md:p-8">
-                        <div>
-                            <h2 class="text-red-600 text-xl md:text-2xl font-bold">Subscribe to our Live Rishtey YouTube
-                                Channel
-                            </h2>
-                        </div>
+                      <div>
+                        <h2 class="text-black text-xl md:text-2xl font-semibold">Subscribe to our Live Rishtey YouTube
+                          Channel
+                        </h2>
+                      </div>
 
-                        <a href="https://www.youtube.com/channel/UCOXZoAZGG9IhYZuxE1B06Vg?sub_confirmation=1"
-                            target="_blank"
-                            class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-slate-50 transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none uppercase">subscribe
-                        </a>
+                      <a href="https://www.youtube.com/channel/UCOXZoAZGG9IhYZuxE1B06Vg?sub_confirmation=1"
+                        target="_blank"
+                        class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-slate-50 transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none uppercase">subscribe
+                      </a>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            <section>
-                <div class="bg-gray-50 m-0 border-0 p-0">
-                    <div class="m-0 border-0 p-0">
-                        <div class="m-0 border-0 p-0">
-                            <footer
-                                class="text-gray-600 px-6 lg:px-8 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-                                <div
-                                    class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-                                    <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
-                                        <div class="sm:col-span-2">
-                                            <a href="https://liverishtey.com" aria-label="Company" title="Company"
-                                                class="inline-flex items-center">
-                                                <svg class="w-6 h-6 ml-2 text-red-600"
-                                                    enable-background="new 0 0 512 512" fill="currentColor"
-                                                    viewBox="0 0 512 512" xml:space="preserve"
-                                                    xmlns="https://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="m354.08 176.93c-37.031 0-71.12 12.818-98.079 34.241-26.959-21.424-61.048-34.241-98.079-34.241-87.079 0-157.92 70.843-157.92 157.92s70.842 157.92 157.92 157.92c37.031 0 71.12-12.818 98.079-34.241 26.959 21.424 61.048 34.241 98.079 34.241 87.079 0 157.92-70.843 157.92-157.92s-70.842-157.92-157.92-157.92zm-196.16 282.45c-68.667 0-124.53-55.864-124.53-124.53 0-68.665 55.864-124.53 124.53-124.53 27.719 0 53.349 9.108 74.064 24.482-22.377 27.258-35.826 62.11-35.826 100.05 0 37.937 13.45 72.789 35.827 100.05-20.714 15.375-46.345 24.483-74.064 24.483zm71.628-124.53c0-28.883 9.886-55.5 26.45-76.648 16.563 21.148 26.45 47.764 26.45 76.648s-9.887 55.5-26.45 76.648c-16.563-21.149-26.45-47.766-26.45-76.648zm124.53 124.53c-27.719 0-53.35-9.108-74.064-24.483 22.377-27.258 35.827-62.11 35.827-100.05 0-37.936-13.449-72.789-35.826-100.05 20.714-15.375 46.345-24.483 74.064-24.483 68.665 0 124.53 55.864 124.53 124.53-1e-3 68.668-55.865 124.53-124.53 124.53z" />
-                                                    <path
-                                                        d="m221.44 150.23c10.507 8.127 24.863 17.46 25.469 17.853l9.09 5.9 9.09-5.9c0.606-0.394 14.96-9.726 25.469-17.853 24.203-18.719 51.985-44.085 51.985-74.342 0-31.246-25.421-56.667-56.667-56.667-10.651 0-20.988 3.013-29.876 8.528-8.888-5.516-19.224-8.528-29.876-8.528-31.246 0-56.667 25.421-56.667 56.667-2e-3 30.257 27.78 55.623 51.983 74.342zm4.683-97.618c6.635 0 12.977 2.853 17.399 7.826l12.477 14.035 12.477-14.034c4.422-4.973 10.764-7.826 17.399-7.826 12.834 0 23.276 10.441 23.276 23.276 0 11.777-13.129 27.903-39.022 47.929-4.383 3.389-9.694 7.131-14.13 10.171-4.437-3.039-9.748-6.781-14.13-10.171-25.893-20.026-39.022-36.152-39.022-47.929 0-12.835 10.441-23.277 23.276-23.277z" />
-                                                </svg>
-                                                <span
-                                                    class="ml-2 text-xl font-bold tracking-wide text-red-600 uppercase">liverishtey.com</span>
-                                            </a>
-                                            <div class="mt-6 lg:max-w-sm">
-                                                <p class="tracking-wide text-gray-800">
-                                                    Simple yet fast matchmaking and matrimonial search service to give
-                                                    you the right
-                                                    solution to
-                                                    find lifepartner and get married easily.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="space-y-3 text-sm">
-                                            <p class="text-base font-bold tracking-wide text-gray-900">Support</p>
-                                            <div class="flex">
-                                                <p class="mr-1 text-gray-800">Phone:</p>
-                                                <a href="tel:868-859-5067" aria-label="Our phone" title="Our phone"
-                                                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">868-859-5067</a>
-                                            </div>
-                                            <div class="flex">
-                                                <p class="mr-1 text-gray-800">Email:</p>
-                                                <a href="mailto:support@liverishtey.com" aria-label="Our email"
-                                                    title="Our email"
-                                                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">support@liverishtey.com</a>
-                                            </div>
-                                            <div class="flex">
-                                                <p class="mr-1 text-gray-800">Address: 402, MR, Wall Street, Hyderabad -
-                                                    500048</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <span class="text-base font-bold tracking-wide text-gray-900">Social</span>
-                                            <div class="flex items-center mt-1 space-x-3">
-                                                <a class="text-gray-500"
-                                                    href="https://www.youtube.com/channel/UCOXZoAZGG9IhYZuxE1B06Vg"
-                                                    target="_blank" rel="noopener noreferrer">
-                                                    <span class="sr-only">YouTube</span>
-                                                    <svg class="w-5 h-5" fill="#ff0000" viewBox="0 0 24 24"
-                                                        xmlns="https://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z" />
-                                                    </svg>
-
-                                                </a>
-                                                <a class="ml-3 text-gray-500"
-                                                    href="https://www.facebook.com/easymatriofficial"
-                                                    rel="noopener noreferrer">
-                                                    <span class="sr-only">Facebook</span>
-                                                    <svg class="w-5 h-5" fill="#3c5a9a" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                                        xmlns="https://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                                                    </svg>
-
-                                                </a>
-                                                <a class="ml-3 text-gray-500" href="https://www.instagram.com/easymatri"
-                                                    rel="noopener noreferrer">
-                                                    <span class="sr-only">Instagram</span>
-                                                    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 2500 2500"
-                                                        width="2500" height="2500" class="w-5 h-5" aria-hidden="true">
-                                                        <defs>
-                                                            <radialGradient id="0" cx="332.14" cy="2511.81" r="3263.54"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset=".09" stop-color="#fa8f21" />
-                                                                <stop offset=".78" stop-color="#d82d7e" />
-                                                            </radialGradient>
-                                                            <radialGradient id="1" cx="1516.14" cy="2623.81" r="2572.12"
-                                                                gradientUnits="userSpaceOnUse">
-                                                                <stop offset=".64" stop-color="#8c3aaa"
-                                                                    stop-opacity="0" />
-                                                                <stop offset="1" stop-color="#8c3aaa" />
-                                                            </radialGradient>
-                                                        </defs>
-                                                        <path
-                                                            d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57"
-                                                            fill="url(#0)" />
-                                                        <path
-                                                            d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57"
-                                                            fill="url(#1)" />
-                                                    </svg>
-
-                                                </a>
-                                            </div>
-                                            <p class="mt-4 text-sm text-gray-500">
-                                                Let's get connected to make happiness.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="font-semibold text-md mb-3 text-red-600">This website & it's programs are
-                                        strictly for
-                                        matrimonial purpose
-                                        only and not a dating website and should not be used for posting obscene
-                                        material.
-                                    </p>
-                                    <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-
-                                        <ul
-                                            class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-                                            <li>
-                                                <a href="https://liverishtey.com/disclaimer.html"
-                                                    class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">Disclaimer
-                                                    Notice</a>
-                                            </li>
-                                            <li>
-                                                <a href="https://liverishtey.com/privacy.html"
-                                                    class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">Privacy
-                                                    Policy</a>
-                                            </li>
-                                            <li>
-                                                <a href="https://liverishtey.com/terms.html"
-                                                    class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">Terms
-                                                    &amp; Conditions</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="text-sm text-center text-gray-500">© 2020 - 2024
-                                        LiveRishtey. Made
-                                        with ❤️ for People.</p>
-                                </div>
-                            </footer>
-                        </div>
-                    </div>
+          </div>
+        </section>
+      </div>
+      <section class="bg-gray-100">
+        <div class="px-4 pt-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div class="max-w-xl mb-3 md:mx-auto sm:text-center lg:max-w-2xl">
+            <div>
+              <p
+                class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-800 uppercase rounded-full bg-teal-accent-400">
+                Check out our features
+              </p>
+            </div>
+            <h2
+              class="max-w-lg mb-3 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+              What make us different...
+            </h2>
+          </div>
+        </div>
+        <!-- second -->
+        <div class="px-4 py-6 mx-auto space-y-3 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div class="grid gap-8 row-gap-5 md:grid-cols">
+            <div class="relative p-3 overflow-hidden transition duration-300 transform  hover:scale-105 ">
+              <p class="mx-auto text-center font-bold text-3xl text-red-600">
+                Common Problems in our search
+              </p>
+              <div class="p-4 flex justify-center items-center flex-wrap">
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class="text-gray-800 transition-colors duration-200">
+                    Costly
+                    and No Transparency
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class=" text-gray-800 transition-colors duration-200">
+                    Waste
+                    of Time or Time taking
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class=" text-gray-800 transition-colors duration-200">
+                    Privacy
+                    or Social Security Issues
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class=" text-gray-800 transition-colors duration-200">
+                    Useless
+                    or Worthless Preferences
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class=" text-gray-800 transition-colors duration-200">
+                    Algorithms
+                    and Targeting
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 px-3 py-1 bg-white hover:bg-gray-100 rounded-full text-sm font-semibold text-gray-600 shadow">
+                  <svg class="w-6 h-6 transition-colors duration-200 text-deep-purple-accent-400" stroke="currentColor"
+                    viewBox="0 0 52 52" xmlns="https://www.w3.org/2000/svg">
+                    <polygon points="29 13 14 29 25 29 23 39 38 23 27 23" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3"></polygon>
+                  </svg>
+                  <span class=" text-gray-800 transition-colors duration-200">
+                    False
+                    Promises and Show off
+                  </span>
+                </span>
+              </div>
+              <div class="flex flex-col items-center justify-center transition duration-300 transform  hover:scale-105">
+                <!-- Sliding Text animation -->
+                <div
+                  class="relative inline-flex items-center justify-center flex-wrap text-center font-extrabold text-3xl md:text-4xl text-slate-900">
+                  Live Rishtey Provides &nbsp;
+                  <span
+                    class="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
+                    <ul class="block animate-text-slide-5 text-left leading-tight [&_li]:block">
+                      <li>Reasonable Cost!</li>
+                      <li>Maximum Exposure</li>
+                      <li>Secure & Fast</li>
+                      <li>Realistic Filters</li>
+                      <li>Fresh Profiles</li>
+                      <li aria-hidden="true">100% Live Work</li>
+                    </ul>
+                  </span>
                 </div>
-            </section>
-
-        </main>
-    </body>
+                <!-- End: Sliding Text animation -->
+              </div>
+            </div>
+            <div class="justify-center items-center text-center p-4">
+              <p class="text-3xl mb-3 font-medium">Even Better than</p>
+              <div class="flex justify-center items-center flex-wrap">
+                <span
+                  class="inline-flex items-center m-2 py-1 px-3 bg-gray-200 text-gray-800 rounded-full text-sm font-semibold shadow">
+                  <span class="ml-1">
+                    NewsPapers
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 py-1 px-3 bg-red-200 text-red-800 rounded-full text-sm font-semibold shadow ">
+                  <span class="ml-1">
+                    Mushata
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2  py-1 px-3 bg-orange-200 text-orange-800 rounded-full text-sm font-semibold shadow">
+                  <span class="ml-1">
+                    Public Groups
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 py-1 px-3 bg-indigo-200 text-indigo-800 rounded-full text-sm font-semibold shadow">
+                  <span class="ml-1">
+                    Telegram Channels / Groups
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 py-1 px-3 bg-blue-200 text-blue-800 rounded-full text-sm font-semibold shadow">
+                  <span class="ml-1">
+                    Facebook Groups
+                  </span>
+                </span>
+                <span
+                  class="inline-flex items-center m-2 py-1 px-3 bg-green-200 text-green-800 rounded-full text-sm font-semibold shadow">
+                  <span class="ml-1">
+                    WhatsApp Groups
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mb-6 flex items-center justify-center">
+          <a href="https://wa.me/?text=I%27m%20inviting%20you%20to%20check%20https%3A%2F%2Fwww.liverishtey.com.%20This%20is%20a%20best%20place%20to%20get%20better%20proposals (rishtey).%0A%0AAlso%20Dont%20forget%20to%20Subscribe%20YouTube%20Channel%20for%20Live%20Streams%21%0Ahttps%3A%2F%2Fwww.youtube.com%2F%40easymatri"
+            class="flex py-3 px-5 rounded-full text-white items-center bg-green-500 text-2xl">
+            <span><svg class="w-8 h-8" enable-background="new 0 0 455.731 455.731" fill="none" stroke="currentColor"
+                version="1.1" viewBox="0 0 455.73 455.73" xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
+                <g fill="#fff">
+                  <path
+                    d="m68.494 387.41 22.323-79.284c-14.355-24.387-21.913-52.134-21.913-80.638 0-87.765 71.402-159.17 159.17-159.17s159.17 71.402 159.17 159.17-71.401 159.17-159.17 159.17c-27.347 0-54.125-7-77.814-20.292l-81.763 21.047zm85.943-50.004 4.872 2.975c20.654 12.609 44.432 19.274 68.762 19.274 72.877 0 132.17-59.29 132.17-132.17s-59.289-132.17-132.17-132.17-132.17 59.29-132.17 132.17c0 25.393 7.217 50.052 20.869 71.311l3.281 5.109-12.855 45.658 47.238-12.16z" />
+                  <path
+                    d="m183.36 153.41-10.328-0.563c-3.244-0.177-6.426 0.907-8.878 3.037-5.007 4.348-13.013 12.754-15.472 23.708-3.667 16.333 2 36.333 16.667 56.333s42 52 90.333 65.667c15.575 4.404 27.827 1.435 37.28-4.612 7.487-4.789 12.648-12.476 14.508-21.166l1.649-7.702c0.524-2.448-0.719-4.932-2.993-5.98l-34.905-16.089c-2.266-1.044-4.953-0.384-6.477 1.591l-13.703 17.764c-1.035 1.342-2.807 1.874-4.407 1.312-9.384-3.298-40.818-16.463-58.066-49.687-0.748-1.441-0.562-3.19 0.499-4.419l13.096-15.15c1.338-1.547 1.676-3.722 0.872-5.602l-15.046-35.201c-0.801-1.874-2.596-3.13-4.629-3.241z" />
+                </g>
+              </svg></span>
+            <span>Invite Friends</span>
+          </a>
+        </div>
+      </section>
+      <section class="bg-red-900">
+        <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
+          <div class="flex flex-col items-center justify-between lg:flex-row">
+            <div class="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
+              <div class="max-w-xl mb-6">
+                <div>
+                  <p
+                    class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-red-600 uppercase rounded-full bg-yellow-300">
+                    premiered
+                  </p>
+                </div>
+                <h2
+                  class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-200 sm:text-4xl sm:leading-none">
+                  Check out
+                  <span class="inline-block text-yellow-300">Live Rishtey Premiere</span>
+                </h2>
+                <p class="text-base text-slate-200 md:text-lg">
+                  We will live stream matrimonial proposals every Sunday, Tuesday, Thurday & Saturday
+                  at 5:00 P.M
+                  IST.
+                  <br><span class="text-yellow-300">Don't forget to interact in live chat.</span>
+                </p>
+              </div>
+              <div class="flex flex-col items-center md:flex-row">
+                <a href="https://www.youtube.com/@easymatri/streams" target="_blank"
+                  class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-slate-50 transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none">
+                  <span class="mr-3">Watch Now</span>
+                  <svg class="w-6" fill="#fff" viewBox="0 0 24 24">
+                    <path
+                      d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z">
+                    </path>
+                  </svg> </a>
+              </div>
+            </div>
+            <div class="relative lg:w-1/2">
+              <img class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
+                src="https://i.postimg.cc/bwyhLY0z/pexels.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                alt="" />
+              <a href="https://www.youtube.com/@easymatri/streams" target="_blank" aria-label="Play Video"
+                class="absolute inset-0 flex items-center justify-center w-full h-full transition-colors duration-300 bg-gray-900 bg-opacity-50 group hover:bg-opacity-25">
+                <div
+                  class="flex items-center justify-center w-16 h-16 transition duration-300 transform bg-gray-100 rounded-full shadow-2xl group-hover:scale-110">
+                  <svg class="w-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z">
+                    </path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="bg-gray-50 m-0 border-0 p-0">
+          <div class="m-0 border-0 p-0">
+            <div class="m-0 border-0 p-0">
+              <footer class="text-gray-600 px-6 lg:px-8 py-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+                <div class="px-4 pt-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+                  <p class="font-semibold text-sm mb-3 text-gray-600">[Disclaimer
+                    Notice] This website & it's programs are
+                    strictly for
+                    matrimonial purpose
+                    only and not a dating website/program and should not be used for posting obscene
+                    material.
+                  </p>
+                  <footer class="flex flex-col items-center justify-between px-4 py-2 mx-auto max-w-7xl md:flex-row">
+                  </footer>
+                  <div class="flex flex-col-reverse justify-between pt-2 pb-3 border-t lg:flex-row">
+                    <ul
+                      class="mb-8 text-sm text-center text-gray-700 md:text-left md:mb-0 flex flex-col space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+                      <li>
+                        <a href="https://liverishtey.com/privacy.html"
+                          class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">Privacy
+                          Policy</a>
+                      </li>
+                      <li>
+                        <a href="https://liverishtey.com/terms.html"
+                          class="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">Terms
+                          &amp; Conditions</a>
+                      </li>
+                    </ul>
+                    <div class="flex items-center space-x-6 justify-center">
+                      <a href="https://www.youtube.com/channel/UCOXZoAZGG9IhYZuxE1B06Vg">
+                        <span class="sr-only">YouTube</span>
+                        <svg class="w-9 h-9" fill="#ff0000" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+                          <path
+                            d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z" />
+                        </svg>
+                      </a>
+                      <a href="https://www.instagram.com/easymatri">
+                        <span class="sr-only">Instagram</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2500 2500" width="2500" height="2500"
+                          class="w-5 h-5" aria-hidden="true">
+                          <defs>
+                            <radialGradient id="0" cx="332.14" cy="2511.81" r="3263.54" gradientUnits="userSpaceOnUse">
+                              <stop offset=".09" stop-color="#fa8f21" />
+                              <stop offset=".78" stop-color="#d82d7e" />
+                            </radialGradient>
+                            <radialGradient id="1" cx="1516.14" cy="2623.81" r="2572.12" gradientUnits="userSpaceOnUse">
+                              <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0" />
+                              <stop offset="1" stop-color="#8c3aaa" />
+                            </radialGradient>
+                          </defs>
+                          <path
+                            d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57"
+                            fill="url(#0)" />
+                          <path
+                            d="M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57"
+                            fill="url(#1)" />
+                        </svg>
+                      </a>
+                      <a href="https://www.facebook.com/easymatriofficial">
+                        <span class="sr-only">Facebook</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1298" height="2500"
+                          viewBox="88.428 12.828 107.543 207.085" class="w-5 h-5" aria-hidden="true">
+                          <path
+                            d="M158.232 219.912v-94.461h31.707l4.747-36.813h-36.454V65.134c0-10.658 2.96-17.922 18.245-17.922l19.494-.009V14.278c-3.373-.447-14.944-1.449-28.406-1.449-28.106 0-47.348 17.155-47.348 48.661v27.149H88.428v36.813h31.788v94.461l38.016-.001z"
+                            fill="#3c5a9a" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+              <footer class="px-4 py-6 mx-auto max-w-7xl">
+                <div class="flex flex-col items-center justify-between md:flex-row">
+                  <a href="https://liverishtey.com" aria-label="LiveRishtey" title="LiveRishtey"
+                    class="inline-flex items-center">
+                    <svg class="w-6 h-6 ml-2 text-red-600" enable-background="new 0 0 512 512" fill="currentColor"
+                      viewBox="0 0 512 512" xml:space="preserve" xmlns="https://www.w3.org/2000/svg">
+                      <path
+                        d="m354.08 176.93c-37.031 0-71.12 12.818-98.079 34.241-26.959-21.424-61.048-34.241-98.079-34.241-87.079 0-157.92 70.843-157.92 157.92s70.842 157.92 157.92 157.92c37.031 0 71.12-12.818 98.079-34.241 26.959 21.424 61.048 34.241 98.079 34.241 87.079 0 157.92-70.843 157.92-157.92s-70.842-157.92-157.92-157.92zm-196.16 282.45c-68.667 0-124.53-55.864-124.53-124.53 0-68.665 55.864-124.53 124.53-124.53 27.719 0 53.349 9.108 74.064 24.482-22.377 27.258-35.826 62.11-35.826 100.05 0 37.937 13.45 72.789 35.827 100.05-20.714 15.375-46.345 24.483-74.064 24.483zm71.628-124.53c0-28.883 9.886-55.5 26.45-76.648 16.563 21.148 26.45 47.764 26.45 76.648s-9.887 55.5-26.45 76.648c-16.563-21.149-26.45-47.766-26.45-76.648zm124.53 124.53c-27.719 0-53.35-9.108-74.064-24.483 22.377-27.258 35.827-62.11 35.827-100.05 0-37.936-13.449-72.789-35.826-100.05 20.714-15.375 46.345-24.483 74.064-24.483 68.665 0 124.53 55.864 124.53 124.53-1e-3 68.668-55.865 124.53-124.53 124.53z" />
+                      <path
+                        d="m221.44 150.23c10.507 8.127 24.863 17.46 25.469 17.853l9.09 5.9 9.09-5.9c0.606-0.394 14.96-9.726 25.469-17.853 24.203-18.719 51.985-44.085 51.985-74.342 0-31.246-25.421-56.667-56.667-56.667-10.651 0-20.988 3.013-29.876 8.528-8.888-5.516-19.224-8.528-29.876-8.528-31.246 0-56.667 25.421-56.667 56.667-2e-3 30.257 27.78 55.623 51.983 74.342zm4.683-97.618c6.635 0 12.977 2.853 17.399 7.826l12.477 14.035 12.477-14.034c4.422-4.973 10.764-7.826 17.399-7.826 12.834 0 23.276 10.441 23.276 23.276 0 11.777-13.129 27.903-39.022 47.929-4.383 3.389-9.694 7.131-14.13 10.171-4.437-3.039-9.748-6.781-14.13-10.171-25.893-20.026-39.022-36.152-39.022-47.929 0-12.835 10.441-23.277 23.276-23.277z" />
+                    </svg>
+                    <span class="ml-2 text-xl font-bold tracking-wide text-red-600 uppercase">liverishtey.com</span>
+                  </a>
+                  <span class="sr-only">LiveRishtey</span>
+                  </a>
+                  <p class="text-sm text-center text-gray-600 md:text-left">© Copyright 2020 - 2024 &nbsp;LiveRishtey.
+                    All
+                    Rights
+                    Reserved.
+                  </p>
+                </div>
+                <span class="flex items-center">
+                  <span class="h-px flex-1 bg-gray-50"></span>
+                  <span class="shrink-0 px-3">Made with ❤️ for People.</span>
+                  <span class="h-px flex-1 bg-gray-50"></span>
+                </span>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 
 </html>
