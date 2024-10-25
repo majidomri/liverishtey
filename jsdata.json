@@ -8,7 +8,8 @@
     "audioName": "house_listing.mp3",
     "phone": "+1234567890",
     "whatsapp": "+1234567890",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "male"
   },
   {
     "title": "Job Vacancy Alert",
@@ -19,7 +20,8 @@
     "audioName": "job_alert.mp3",
     "phone": "+1987654321",
     "whatsapp":  "+1987654321",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "female"
   },
   {
     "title": "Event Announcement",
@@ -30,7 +32,8 @@
     "audioName": "event_announcement.mp3",
     "phone": "+1456789123",
     "whatsapp":  "+1456789123",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "male"
   },
   {
     "title": "Sale Offer Notice",
@@ -41,7 +44,8 @@
     "audioName": "sale_offer.mp3",
     "phone": "+1230987654",
     "whatsapp":  "+1230987654",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "female"
   },
   {
     "title": "Property Rent Notice",
@@ -52,7 +56,8 @@
     "audioName": "rent_notice.mp3",
     "phone": "+1478523690",
     "whatsapp":  "+1478523690",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "male"
   },
   {
     "title": "Lost & Found Alert",
@@ -63,7 +68,8 @@
     "audioName": "lost_found.mp3",
     "phone": "+1938475620",
     "whatsapp":  "+1938475620",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "female"
   },
   {
     "title": "Community Meeting",
@@ -74,7 +80,8 @@
     "audioName": "community_meeting.mp3",
     "phone": "+1283495760",
     "whatsapp":  "+1283495760",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "male"
   },
   {
     "title": "Urgent Job Vacancy",
@@ -85,7 +92,8 @@
     "audioName": "urgent_job.mp3",
     "phone": "+1209485763",
     "whatsapp":  "+1209485763",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "female"
   },
   {
     "title": "School Admission Notice",
@@ -96,7 +104,8 @@
     "audioName": "admission_notice.mp3",
     "phone": "+1357924680",
     "whatsapp":  "+1357924680",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "male"
   },
   {
     "title": "Job Opening Announcement",
@@ -107,6 +116,7 @@
     "audioName": "job_opening.mp3",
     "phone": "+1478523609",
     "whatsapp": "+1478523609",
-    "date": "2024-10-22"
+    "date": "2024-10-22",
+    "gender": "female"
   }
 ]
