@@ -1,1 +1,112 @@
-json.data
+[
+  {
+    "title": "Urgent House Listing",
+    "lr_id": "001",
+    "body_text": "Spacious 3-bedroom house for sale.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "house_listing.mp3",
+    "whatsapp": "+1234567890",
+    "phone_number": "+1234567890",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Job Vacancy Alert",
+    "lr_id": "002",
+    "body_text": "Software developer role in IT firm.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "job_alert.mp3",
+    "whatsapp": "+1987654321",
+    "phone_number": "+1987654321",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Event Announcement",
+    "lr_id": "003",
+    "body_text": "Annual cultural fest on Friday.",
+    "urgent": false,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "event_announcement.mp3",
+    "whatsapp": "+1456789123",
+    "phone_number": "+1456789123",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Sale Offer Notice",
+    "lr_id": "004",
+    "body_text": "Discount on all products this week.",
+    "urgent": false,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "sale_offer.mp3",
+    "whatsapp": "+1230987654",
+    "phone_number": "+1230987654",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Property Rent Notice",
+    "lr_id": "005",
+    "body_text": "2-bedroom apartment available for rent.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "rent_notice.mp3",
+    "whatsapp": "+1478523690",
+    "phone_number": "+1478523690",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Lost & Found Alert",
+    "lr_id": "006",
+    "body_text": "Lost wallet near downtown area.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "lost_found.mp3",
+    "whatsapp": "+1938475620",
+    "phone_number": "+1938475620",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Community Meeting",
+    "lr_id": "007",
+    "body_text": "Monthly meeting scheduled for Sunday.",
+    "urgent": false,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "community_meeting.mp3",
+    "whatsapp": "+1283495760",
+    "phone_number": "+1283495760",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Urgent Job Vacancy",
+    "lr_id": "008",
+    "body_text": "Immediate opening for an accountant.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "urgent_job.mp3",
+    "whatsapp": "+1209485763",
+    "phone_number": "+1209485763",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "School Admission Notice",
+    "lr_id": "009",
+    "body_text": "Admissions open for the new term.",
+    "urgent": false,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "admission_notice.mp3",
+    "whatsapp": "+1357924680",
+    "phone_number": "+1357924680",
+    "date_created": "2024-10-22"
+  },
+  {
+    "title": "Job Opening Announcement",
+    "lr_id": "010",
+    "body_text": "Opening for data analyst in tech firm.",
+    "urgent": true,
+    "audio_file_src": "https://voca.ro/16hVxPbSx1lY",
+    "audio_file_name": "job_opening.mp3",
+    "whatsapp": "+1478523609",
+    "phone_number": "+1478523609",
+    "date_created": "2024-10-22"
+  }
+]
