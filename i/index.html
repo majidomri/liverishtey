@@ -387,31 +387,35 @@
               <div
                 class="pt-5 flex gap-2 absolute bottom-3 inset-x-6 justify-between space-x-1 border-t-1 border-gray-100 mt-6 mb-3">
                 <!-- Enhanced Audio Player Button -->
-                <div class="relative">
-                  <button @click="togglePlay($event)"
-                    class="relative w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 transition-all duration-300 group">
-                    <!-- Circular Progress -->
-                    <svg class="absolute inset-0 w-full h-full -rotate-90">
-                      <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" />
-                      <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none"
-                        :stroke-dasharray="2 * Math.PI * 18"
-                        :stroke-dashoffset="2 * Math.PI * 18 * (1 - user.audioProgress / 100)"
-                        class="transition-all duration-150" />
-                    </svg>
-                    <!-- Play/Pause Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
-                      class="relative z-10 transition-transform duration-200 group-hover:scale-110"
-                      :class="{'hidden': isPlaying(user.id), 'block': !isPlaying(user.id)}">
-                      <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
-                      class="relative z-10 transition-transform duration-200 group-hover:scale-110"
-                      :class="{'block': isPlaying(user.id), 'hidden': !isPlaying(user.id)}">
-                      <rect x="6" y="4" width="4" height="16" />
-                      <rect x="14" y="4" width="4" height="16" />
-                    </svg>
-                  </button>
-                </div>
+                   <!-- Audio Player Section -->
+                   <div class="pt-5 flex gap-2 absolute bottom-3 inset-x-6 justify-between space-x-1 border-t-1 border-gray-100 mt-6 mb-3">
+                    <div class="relative">
+                        <button @click="togglePlay($event)" class="relative w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 transition-all duration-300 group">
+                            <svg class="absolute inset-0 w-full h-full -rotate-90">
+                                <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" />
+                                <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none"
+                                    :stroke-dasharray="2 * Math.PI * 18"
+                                    :stroke-dashoffset="2 * Math.PI * 18 * (1 - user.audioProgress / 100)"
+                                    class="transition-all duration-150" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
+                                class="relative z-10 transition-transform duration-200 group-hover:scale-110"
+                                :class="{'hidden': isPlaying(user.id), 'block': !isPlaying(user.id)}">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
+                                class="relative z-10 transition-transform duration-200 group-hover:scale-110"
+                                :class="{'block': isPlaying(user.id), 'hidden': !isPlaying(user.id)}">
+                                <rect x="6" y="4" width="4" height="16" />
+                                <rect x="14" y="4" width="4" height="16" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <audio :id="'audio-' + user.id" @timeupdate="updateProgress($event, user)"
+                        @loadedmetadata="setDuration($event, user)" @ended="handleAudioEnd($event, user)">
+                        <source :src="user.audioUrl" type="audio/mpeg" />
+                    </audio>
 
                 <audio :id="'audio-' + user.id" @timeupdate="updateProgress($event, user)"
                   @loadedmetadata="setDuration($event, user)" @ended="handleAudioEnd($event, user)">
