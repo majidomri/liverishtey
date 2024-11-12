@@ -146,48 +146,21 @@
         background-color: #38a169;
       }
 
-      /* Voice Message Player styles */
-      .voice-message-player {
-        border-radius: 100%;
-        width: 2rem;
-        height: 1rem;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-      }
+      
+      .relative {
+    position: relative;
+}
 
-      .play-pause-btn {
-        width: 2rem;
-        height: 1rem;
-        background-color: #4299e1;
-        color: white;
-        border-radius: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .play-pause-btn:hover {
-        background-color: #3182ce;
-      }
-
-      .progress-bar {
-        flex-grow: 1;
-        height: 0.5rem;
-        background-color: #000;
-        border-radius: 9999px;
-        margin: 0 0.5rem;
-        overflow: hidden;
-      }
-
-      .progress {
-        height: 100%;
-        background-color: #383838;
-        border-radius: 9999px;
-        transition: width 0.1s linear;
-      }
+button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
       /* Add this to your main CSS or in a <style> tag */
       .glossy-effect {
