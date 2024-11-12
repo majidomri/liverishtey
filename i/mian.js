@@ -1,186 +1,259 @@
-import "./style.css";
-import { profiles } from ".profiles.js";
-import { createAudioPlayer } from "./components/AudioPlayer.js";
+function userDirectory() {
+  return {
+    users: [],
+    displayedUsers: [],
+    searchTerm: "",
+    idFilter: "",
+    sortOrder: "dateDesc",
+    genderFilter: "all",
+    educationFilter: "all",
+    loading: false,
+    drawerOpen: false,
+    audioPlayers: {},
+    hasMore: true,
+    page: 1,
+    itemsPerPage: 25,
+    educationOptions: [
+      "All",
+      "Preprimary",
+      "Primary",
+      "Upper Primary",
+      "Secondary",
+      "Higher Secondary",
+      "Intermediate",
+      "Graduate",
+      "Post Graduate",
+      "Engineer",
+      "Doctor",
+      "PHD",
+      "Religious Scholar",
+    ],
+    activeAudio: null, // Track the currently active audio
 
-const CACHE_KEY = "matchmaking_cache";
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+    init() {
+      this.fetchUsers();
+      this.setupInfiniteScroll();
+      this.setupDrawerSwipe();
+    },
 
-window.Alpine = Alpine;
+    setupDrawerSwipe() {
+      let touchStartY = 0;
+      const drawer = document.getElementById("mobileDrawer");
 
-// Initialize Alpine.js data
-Alpine.data("matchmaking", () => ({
-  searchQuery: "",
-  filters: {
-    education: "",
-    gender: "",
-    priority: "",
-  },
-  profiles: profiles,
-  filteredProfiles: [],
-  drawerOpen: false,
-  page: 1,
-  perPage: 20,
-  hasMore: true,
-  loading: false,
-  sortOrder: "dateDesc",
-  activeAudio: null,
-
-  init() {
-    this.filterProfiles();
-    this.setupInfiniteScroll();
-    this.prefetchAudioFiles(); // Prefetch audio files on init
-  },
-  clearAllFilters() {
-    this.searchQuery = "";
-    this.filters = {
-      education: "",
-      gender: "",
-      priority: "",
-    };
-    this.resetPagination();
-  },
-
-  setupInfiniteScroll() {
-    window.addEventListener("scroll", () => {
-      if (
-        window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 500 &&
-        !this.loading &&
-        this.hasMore
-      ) {
-        this.loadMore();
-      }
-    });
-  },
-
-  loadMore() {
-    if (this.loading || !this.hasMore) return;
-    this.page++;
-    this.filterProfiles(true);
-  },
-
-  resetPagination() {
-    this.page = 1;
-    this.hasMore = true;
-    this.filterProfiles();
-  },
-
-  filterProfiles(loadMore = false) {
-    if (!loadMore) {
-      this.loading = true;
-    }
-
-    let filtered = this.profiles.filter((profile) => {
-      const matchesSearch =
-        profile.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        profile.description
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase());
-
-      const matchesEducation =
-        !this.filters.education || profile.education === this.filters.education;
-      const matchesGender =
-        !this.filters.gender || profile.gender === this.filters.gender;
-      const matchesPriority =
-        !this.filters.priority || profile.priority === this.filters.priority;
-
-      return (
-        matchesSearch && matchesEducation && matchesGender && matchesPriority
+      drawer.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartY = e.touches[0].clientY;
+        },
+        { passive: true }
       );
-    });
 
-    // Apply sorting
-    filtered.sort((a, b) => {
-      switch (this.sortOrder) {
-        case "dateDesc":
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        case "dateAsc":
-          return new Date(a.createdAt) - new Date(b.createdAt);
-        case "userUrgent":
-          if (a.priority !== "urgent" && b.priority !== "urgent") return 0;
-          if (a.priority === "urgent" && b.priority !== "urgent") return -1;
-          if (a.priority !== "urgent" && b.priority === "urgent") return 1;
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        default:
-          return this.calculateRelevance(b) - this.calculateRelevance(a);
-      }
-    });
+      drawer.addEventListener(
+        "touchmove",
+        (e) => {
+          const currentY = e.touches[0].clientY;
+          const diff = currentY - touchStartY;
 
-    // When sorting by urgent, filter out non-urgent listings
-    if (this.sortOrder === "userUrgent") {
-      filtered = filtered.filter((profile) => profile.priority === "urgent");
-    }
+          if (diff > 50 && this.drawerOpen) {
+            this.toggleDrawer();
+          } else if (diff < -50 && !this.drawerOpen) {
+            this.toggleDrawer();
+          }
+        },
+        { passive: true }
+      );
+    },
 
-    // Apply pagination
-    const startIndex = 0;
-    const endIndex = this.page * this.perPage;
-    this.hasMore = endIndex < filtered.length;
-
-    // Update filtered profiles
-    this.filteredProfiles = filtered.slice(startIndex, endIndex);
-    this.loading = false;
-  },
-
-  calculateRelevance(profile) {
-    if (!this.searchQuery) return 0;
-    const searchLower = this.searchQuery.toLowerCase();
-    let relevance = 0;
-    if (profile.title.toLowerCase().includes(searchLower)) relevance += 3;
-    if (profile.description.toLowerCase().includes(searchLower)) relevance += 2;
-    return relevance;
-  },
-
-  toggleDrawer() {
-    this.drawerOpen = !this.drawerOpen;
-  },
-
-  // Prefetch audio files
-  prefetchAudioFiles() {
-    this.profiles.forEach((profile) => {
-      if (profile.contact.audioMessage) {
-        prefetchAudio(profile.contact.audioMessage);
-      }
-    });
-  },
-
-  // Audio control methods
-  stopAllAudio() {
-    document.querySelectorAll("audio").forEach((audio) => {
-      if (!audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-        const button = audio.parentElement.querySelector("button i");
-        if (button) {
-          button.classList.replace("fa-pause", "fa-play");
+    async fetchUsers() {
+      this.loading = true;
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/majidomri/liverishtey/main/jsdata.json"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
+        const data = await response.json();
+
+        const processedUsers = data.map((user) => ({
+          ...user,
+          date: new Date(user.date || Date.now()).toISOString(),
+          gender: user.gender || (Math.random() > 0.5 ? "male" : "female"),
+          urgent: user.urgent || false,
+          phone:
+            user.phone ||
+            "+1" + Math.floor(Math.random() * 9000000000 + 1000000000),
+          audioUrl:
+            user.audioUrl ||
+            "https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav",
+          audioProgress: 0,
+          audioDuration: 0,
+        }));
+
+        this.users = processedUsers;
+        this.applyFilters();
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        this.users = [];
+      } finally {
+        this.loading = false;
       }
-    });
-    this.activeAudio = null;
-  },
+    },
 
-  toggleAudio(profileId) {
-    const audioElement = document.getElementById(`audio-${profileId}`);
+    togglePlay(event) {
+      const audioContainer = event.target.closest(".relative");
+      const audio = audioContainer.nextElementSibling;
 
-    if (this.activeAudio === profileId) {
-      // If the same audio is clicked, pause it
-      audioElement.pause();
+      if (this.activeAudio && this.activeAudio !== audio) {
+        this.stopAudio(this.activeAudio);
+      }
+
+      if (audio.paused) {
+        audio
+          .play()
+          .then(() => {
+            this.activeAudio = audio; // Set the currently active audio
+            audio.onended = () => {
+              this.activeAudio = null; // Reset active audio when finished
+            };
+          })
+          .catch((error) => {
+            console.error("Playback failed:", error);
+          });
+      } else {
+        this.stopAudio(audio);
+      }
+    },
+
+    stopAudio(audio) {
+      audio.pause();
+      audio.currentTime = 0;
       this.activeAudio = null; // Reset active audio
-    } else {
-      // Stop any currently playing audio
-      this.stopAllAudio();
+    },
 
-      // Play the new audio
-      audioElement.play();
-      this.activeAudio = profileId; // Set active audio to the current one
+    updateProgress(event, user) {
+      const audio = event.target;
+      if (audio.duration) {
+        user.audioProgress = (audio.currentTime / audio.duration) * 100;
+      }
+    },
 
-      // Add ended event listener
-      audioElement.onended = () => {
-        this.activeAudio = null; // Reset active audio when finished
-      };
-    }
-  },
-}));
+    handleAudioEnd(event, user) {
+      const audio = event.target;
+      audio.currentTime = 0;
+      user.audioProgress = 0;
+    },
 
-Alpine.data("audioPlayer", createAudioPlayer);
+    setDuration(event, user) {
+      user.audioDuration = event.target.duration;
+    },
 
-Alpine.start();
+    setupInfiniteScroll() {
+      window.addEventListener("scroll", () => {
+        if (
+          window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 500 &&
+          !this.loading &&
+          this.hasMore
+        ) {
+          this.loadMoreUsers();
+        }
+      });
+    },
+
+    loadMoreUsers() {
+      this.page++;
+      this.applyFilters();
+    },
+
+    resetPagination() {
+      this.page = 1;
+      this.hasMore = true;
+      this.applyFilters();
+    },
+
+    setGenderFilter(gender) {
+      this.genderFilter = gender;
+      this.resetPagination();
+    },
+
+    setEducationFilter(education) {
+      this.educationFilter = education;
+      this.resetPagination();
+    },
+
+    applyFilters() {
+      this.loading = true;
+      let filteredUsers = [...this.users];
+
+      if (this.searchTerm) {
+        const searchLower = this.searchTerm.toLowerCase();
+        filteredUsers = filteredUsers.filter(
+          (user) =>
+            user.name?.toLowerCase().includes(searchLower) ||
+            user.email?.toLowerCase().includes(searchLower) ||
+            user.body?.toLowerCase().includes(searchLower)
+        );
+      }
+
+      if (this.idFilter) {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.id?.toString() === this.idFilter
+        );
+      }
+
+      if (this.genderFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.gender === this.genderFilter
+        );
+      }
+
+      if (this.educationFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) =>
+            user.education?.toLowerCase() === this.educationFilter.toLowerCase()
+        );
+      }
+
+      filteredUsers.sort((a, b) => {
+        switch (this.sortOrder) {
+          case "dateDesc":
+            return new Date(b.date) - new Date(a.date);
+          case "dateAsc":
+            return new Date(a.date) - new Date(b.date);
+          case "userUrgent":
+            if (!a.urgent && !b.urgent) return 0;
+            if (a.urgent && !b.urgent) return -1;
+            if (!a.urgent && b.urgent) return 1;
+            return new Date(b.date) - new Date(a.date);
+          default:
+            return this.calculateRelevance(b) - this.calculateRelevance(a);
+        }
+      });
+
+      if (this.sortOrder === "userUrgent") {
+        filteredUsers = filteredUsers.filter((user) => user.urgent);
+      }
+
+      const start = 0;
+      const end = this.page * this.itemsPerPage;
+      this.displayedUsers = filteredUsers.slice(start, end);
+      this.hasMore = end < filteredUsers.length;
+      this.loading = false;
+    },
+
+    calculateRelevance(user) {
+      if (!this.searchTerm) return 0;
+      const searchLower = this.searchTerm.toLowerCase();
+      let relevance = 0;
+      if (user.name?.toLowerCase().includes(searchLower)) relevance += 3;
+      if (user.email?.toLowerCase().includes(searchLower)) relevance += 2;
+      if (user.body?.toLowerCase().includes(searchLower)) relevance += 1;
+      return relevance;
+    },
+
+    toggleDrawer() {
+      this.drawerOpen = !this.drawerOpen;
+    },
+  };
+}
