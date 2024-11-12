@@ -103,27 +103,24 @@ function userDirectory() {
     togglePlay(event) {
       const audioContainer = event.target.closest(".relative");
       const audio = audioContainer.nextElementSibling;
-
+  
       if (this.activeAudio && this.activeAudio !== audio) {
-        this.stopAudio(this.activeAudio);
+          this.stopAudio(this.activeAudio);
       }
-
+  
       if (audio.paused) {
-        audio
-          .play()
-          .then(() => {
-            this.activeAudio = audio; // Set the currently active audio
-            audio.onended = () => {
-              this.activeAudio = null; // Reset active audio when finished
-            };
-          })
-          .catch((error) => {
-            console.error("Playback failed:", error);
+          audio.play().then(() => {
+              this.activeAudio = audio; // Set the currently active audio
+              audio.onended = () => {
+                  this.activeAudio = null; // Reset active audio when finished
+              };
+          }).catch((error) => {
+              console.error("Playback failed:", error);
           });
       } else {
-        this.stopAudio(audio);
+          this.stopAudio(audio);
       }
-    },
+  },
 
     stopAudio(audio) {
       audio.pause();
