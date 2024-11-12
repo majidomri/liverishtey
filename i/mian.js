@@ -1,5 +1,5 @@
 import "./style.css";
-import { profiles } from "/data/profiles.js";
+import { profiles } from ".profiles.js";
 import { createAudioPlayer } from "./components/AudioPlayer.js";
 
 const CACHE_KEY = "matchmaking_cache";
