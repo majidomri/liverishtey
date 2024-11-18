@@ -51,21 +51,21 @@
       </nav>
 
       <!-- Hero Content -->
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
         <div class="text-center">
           <div
-            class="border relative border-blue-200 border-whit/50 inline-flex items-center p-0.5 pl-2.5 rounded-full gap-x-2 border-white/40  bg-gray-950/20 before:scale-y-110 before:absolute before:inset-x-4 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-yellow-50 before:to-transparent before:h-px before:w-3/5 mb-6">
+            class="border relative border-blue-200 border-whit/50 inline-flex items-center p-0.5 pl-2.5 rounded-full gap-x-2 border-white/40  bg-gray-950/20 before:scale-y-110 before:absolute before:inset-x-4 before:-bottom-px before:bg-gradient-to-r before:from-transparent before:via-yellow-50 before:to-transparent before:h-px before:w-3/5 mb-3">
             <span class="text-sm tracking-wide text-white">Introducing</span><span
               class="px-2 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-gray-950/20 border border-white/30 rounded-full">Matrimonial
               Seach Engine</span>
           </div>
-          <h1 class="mt-8 text-3xl font-bold sm:text-4xl text-white lg:text-5xl xl:text-6xl">
+          <h1 class="mt-6 text-3xl font-bold sm:text-4xl text-white lg:text-5xl xl:text-6xl">
             Perfect Life Partner comes from <span class="text-white font-extrabold">Perfect Search!</span></h1>
           <p class="text-xl text-white/90 mb-12">Join hundreds of happy couples who found their soulmate on Live Rishtey
           </p>
 
           <!-- Search Form -->
-          <div class="max-w-2xl mx-auto lg:bg-white/95 rounded-full px-9 py-6 backdrop-blur-sm"
+          <div class="max-w-2xl mx-auto lg:bg-white/95 rounded-full px-9 py-3 backdrop-blur-sm"
             x-data="{ selectedReligion: '' }">
             <form @submit.prevent="openReligionPage" class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
@@ -80,8 +80,8 @@
                 <select x-model="selectedReligion"
                   class="w-full p-3 rounded-full border border-gray-300 focus:ring-2 focus:ring-pink-500">
                   <option value="">Religion</option>
-                  <option value="h">Hindu</option>
                   <option value="i">Muslim</option>
+                  <option value="h">Hindu</option>
                   <option value="c">Christian</option>
                   <option value="s">Sikh</option>
                 </select>
@@ -96,7 +96,7 @@
     </div>
 
     <!-- Features Section -->
-    <div class="py-16 bg-gray-50">
+    <div class="py-16 bg-gray-50 sm:min-h-screen">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-center mb-12">Why Choose LiveRishtey?</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -229,9 +229,6 @@
               <video class="w-full h-[400px] object-cover"
                 poster="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&w=800&h=600" muted loop
                 autoplay>
-                <iframe width="1501" height="742" src="https://www.youtube.com/embed/0CSyNa-l7NM"
-                  title="LiveRishtey Premiere" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
               </video>
               <div class="absolute top-4 left-4">
                 <span class="px-4 py-2 bg-red-600 text-white rounded-lg flex items-center gap-2">
@@ -283,33 +280,33 @@
         <!-- Religion Section -->
         <div class="flex flex-wrap justify-center gap-6 mb-8">
 
-          <a href="/matrimony/i/" target="_self"
+          <a href="/m/i/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Muslim
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
           </a>
-          <a href="/matrimony/h/" target="_self"
+          <a href="/m/h/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Hindu
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
           </a>
-          <a href="/matrimony/c/" target="_self"
+          <a href="/m/c/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Christian
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
           </a>
-          <a href="/matrimony/b/" target="_self"
+          <a href="/m/b/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Buddhist
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
           </a>
 
-          <a href="/matrimony/s/" target="_self"
+          <a href="/m/s/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Sikh
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
           </a>
-          <a href="/matrimony/j/" target="_self"
+          <a href="/m/j/" target="_self"
             class="flex items-center px-6 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors shadow-md">
             Jain
             <i class="fas fa-external-link-alt ml-2 text-xs text-gray-400"></i>
@@ -321,7 +318,7 @@
     </section>
     
     <!-- FAQs -->
-    <div class="bg-gray-100 p-16 mx-auto">
+    <div class="bg-gray-100 py-16 px-6 mx-auto">
       <div class="max-w-6xl mx-auto"
         x-data="{ faqs: [{ question: 'How to register?', answer: 'You can register on our website by clicking on the Register button on the homepage. You will be asked to provide your full name, phone number, and WhatsApp number. Once you submit your profile, we will contact to complete the registration process.', isOpen: false }, { question: 'How to check matrimonial profiles ads?', answer: 'You can check your matrimonial profiles ads by clicking on the religion button on homepage. Once you select your religion, you will be redirected to the religion page where you can see all the matrimonial profiles ads.', isOpen: false }, { question: 'What is the payment method?', answer: 'We accept all modes of payment.', isOpen: false }, { question: 'What is your return policy?', answer: 'As a nature of classifieds, we do not offer a return policy.!', isOpen: false }, { question: 'How many days will my ads be available?', answer: 'We will make your ad available for 7 days.', isOpen: false }, { question: 'How to verify ads?', answer: 'You can verify ads prospective by doing background check in their locality and at Qazi.', isOpen: false }] }">
         <div class="text-center mb-12">
@@ -361,14 +358,14 @@
             </div>
 
             <a href="https://www.youtube.com/channel/UCOXZoAZGG9IhYZuxE1B06Vg?sub_confirmation=1" target="_blank"
-              class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-slate-50 transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none uppercase">subscribe
+              class="inline-flex items-center justify-center w-full h-12 px-12 mb-3 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto md:mr-4 md:mb-0 bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none uppercase">subscribe
             </a>
           </div>
         </div>
       </div>
     </section>
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
+    <footer class="bg-gray-900 text-gray-300 py-12 px-6">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -390,11 +387,11 @@
           <div>
             <h3 class="text-white text-lg font-semibold mb-4">Our Services</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="/matrimony/i/" class="hover:text-white transition-colors">Muslim Matrimony</a></li>
-              <li><a href="/matrimony/h/" class="hover:text-white transition-colors">Hindu Matrimony</a></li>
-              <li><a href="/matrimony/s/" class="hover:text-white transition-colors">Sikh Matrimony</a></li>
-              <li><a href="/matrimony/c/" class="hover:text-white transition-colors">Christian Matrimony</a></li>
-              <li><a href="/matrimony/j/" class="hover:text-white transition-colors">Jain Matrimony</a></li>
+              <li><a href="/m/i/" class="hover:text-white transition-colors">Muslim Matrimony</a></li>
+              <li><a href="/m/h/" class="hover:text-white transition-colors">Hindu Matrimony</a></li>
+              <li><a href="/m/s/" class="hover:text-white transition-colors">Sikh Matrimony</a></li>
+              <li><a href="/m/c/" class="hover:text-white transition-colors">Christian Matrimony</a></li>
+              <li><a href="/m/j/" class="hover:text-white transition-colors">Jain Matrimony</a></li>
             </ul>
           </div>
           <div>
