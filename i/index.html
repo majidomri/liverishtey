@@ -4,21 +4,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Matchmaking</title>
-
-    <!-- Preload and Stylesheets -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Local CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./src/output.css">
-
+    <title>Live Rishtey</title>
+    <meta name="description"
+      content="Find your perfect match on Live Rishtey, the best matchmaking platform for matrimonial ads." />
+    <meta name="keywords" content="matchmaking, rishtey, matrimonial ads, find partner, marriage ads" />
+    <meta property="og:title" content="Live Rishtey - Best Matchmaking Platform" />
+    <meta property="og:description" content="Search and post matrimonial ads on Live Rishtey." />
+    <meta property="og:url" content="https://liverishtey.com" />
+    <meta property="og:image" content="https://liverishtey.com/og-image.jpg" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      as="style">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <style>
       body {
-        background-color: #e5f2ff;
+        background-color: #edf6ff;
       }
 
       .gradient-bg {
@@ -40,27 +48,6 @@
 
       .filter-button:hover {
         transform: translateY(-2px);
-      }
-
-      .search-input {
-        transition: all 0.3s ease;
-      }
-
-      .search-input:focus {
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-      }
-
-      .gender-button {
-        transition: all 0.3s ease;
-      }
-
-      .gender-button:hover {
-        transform: translateY(-2px);
-      }
-
-      .gender-button.active {
-        background-color: #4299e1;
-        color: white;
       }
 
       .drawer {
@@ -103,12 +90,7 @@
 
       /* Add this to your main CSS or in a <style> tag */
       .glossy-effect {
-        background: rgba(255, 255, 255, 0.2);
-        /* Light, semi-transparent white */
-        backdrop-filter: blur(10px);
-        /* Adds a blur effect */
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        /* Light border for glass look */
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         box-shadow:
           inset 0 0 10px rgba(255, 255, 255, 0.2),
           /* Soft inner shadow */
@@ -132,35 +114,31 @@
     </style>
   </head>
 
-  <body class="bg-gray-50 font-sans">
-    <div x-data="matchmaking" class="min-h-screen" x-cloak>
-      <!-- Header -->
-      <header class="shadow-sm">
-        <nav class="gradient-bg text-white shadow-md">
-          <div class="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-              <div class="flex-shrink-0 flex items-center">
-                <i class="fas fa-ring text-3xl mr-2"></i>
-                <span class="font-bold text-xl">LiveRishtey</span>
-              </div>
-              <div class="flex items-center">
-                <a href="https://telegram.me/liverishteyofficial" target="_blank"
-                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-sm text-indigo-600 bg-white hover:bg-indigo-50 focus:none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">
-                  <i class="fab fa-telegram mr-2"></i>
-                  Post Ad
-                </a>
-              </div>
+  <body class="bg-gray-100 min-h-screen font-sans antialiased">
+    <div id="app" x-data="userDirectory()" x-init="init()" class="relative">
+      <!-- Navbar -->
+      <nav class="gradient-bg text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+              <i class="fas fa-ring text-3xl mr-2"></i>
+              <span class="font-bold text-xl">LiveRishtey</span>
+            </div>
+            <div class="flex items-center">
+              <a href="https://telegram.me/liverishtey" target="_blank"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-sm text-indigo-600 bg-white hover:bg-indigo-50 focus:none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">
+                <i class="fab fa-telegram mr-2"></i>
+                Post Ad
+              </a>
             </div>
           </div>
-        </nav>
-      </header>
-
-      <!-- Main Content -->
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        </div>
+      </nav>
+      <div class="max-w-7xl mx-auto p-4 md:p-8">
         <div class="flex">
           <div class="text-left" x-data="{
               text: 'Search',
-              textArray : ['Search & Filter Ads', '', 'Try LiveRishtey', '1000 Ads Daily'],
+              textArray : ['Search & Filter Ads', '', 'Try LiveRishtey'],
               textIndex: 0,
               charIndex: 0,
               pauseEnd: 1500,
@@ -174,6 +152,7 @@
                 let current = $data.textArray[$data.textIndex];
                 $data.text = current.substring(0, $data.charIndex);
                 $data.charIndex += $data.direction === 'forward' ? 1 : -1;
+
                 if ($data.charIndex > current.length) {
                   $data.direction = 'backward';
                   clearInterval(typingInterval);
@@ -187,6 +166,7 @@
                   }, $data.pauseStart);
                 }
               }
+
               setInterval(() => {
                 $refs.cursor.classList.toggle('hidden');
               }, $data.cursorSpeed);
@@ -197,420 +177,257 @@
             </div>
           </div>
         </div>
-        <!-- Search and Filters - Desktop -->
-        <div class="bg-white rounded-lg shadow p-6 mb-8 hidden md:block">
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Search</label>
-              <input type="text" x-model="searchQuery" @input="resetPagination()"
-                class="mt-1 block w-full h-12 px-4 pr-10 shadow-sm  focus:ring-indigo-500 border border-gray-300 focus:outline-none focus:border-indigo-500"
-                placeholder="Search profiles...">
+        <!-- Desktop Filters -->
+        <div id="desktopFilters" class="hidden md:block mb-6 bg-white rounded-md shadow-md m-1 p-9 fade-in">
+          <div class="flex flex-wrap justify-center items-center gap-6">
+            <div class="relative flex-grow">
+              <div class="">
+                <input x-model="searchTerm" @input="resetPagination" type="search" placeholder="Search..."
+                  class="flex-grow w-full h-12 px-4 pr-10 rounded-sm border border-gray-300 focus:outline-none focus:border-indigo-500" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-3 h-6 w-6 text-gray-400" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
             </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Education Level</label>
-              <select x-model="filters.education" @change="resetPagination()"
-                class="mt-1 block w-full h-12 px-4 pr-10 shadow-sm  focus:ring-indigo-500 border border-gray-300 focus:outline-none focus:border-indigo-500">
-                <option value="">All Levels</option>
-                <option value="high-school">High School</option>
-                <option value="bachelors">Bachelor's Degree</option>
-                <option value="masters">Master's Degree</option>
-                <option value="phd">PhD</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Gender</label>
-              <select x-model="filters.gender" @change="resetPagination()"
-                class="mt-1 block w-full h-12 px-4 pr-10 shadow-sm  focus:ring-indigo-500 border border-gray-300 focus:outline-none focus:border-indigo-500">
+            <input x-model="idFilter" @input="resetPagination" type="number" placeholder="Filter by ID"
+              class="p-3 border border-gray-300 rounded-sm focus:outline-none focus:border-indigo-500" />
+            <select x-model="sortOrder" @change="resetPagination"
+              class="p-3 border border-gray-300 rounded-sm focus:outline-none focus:border-indigo-500">
+              <option value="dateDesc">Date (Newest)</option>
+              <option value="dateAsc">Date (Oldest)</option>
+              <option value="userUrgent">Urgent</option>
+              <option value="relevance">Relevance</option>
+            </select>
+
+            <div class="p-3 border border-gray-300 rounded-sm focus:outline-none focus:border-indigo-500">
+              <select x-model="educationFilter" @change="applyFilters()">
                 <option value="">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Preprimary">Preprimary</option>
+                <option value="Primary">Primary</option>
+                <option value="Upper Primary">Upper Primary</option>
+                <option value="Secondary">Secondary</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Post Graduate">Post Graduate</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Doctor">Doctor</option>
+                <option value="PhD">PhD</option>
+                <option value="Hafiz/Aalim">Hafiz/Aalim</option>
+                <option value="Diploma">Diploma</option>
               </select>
             </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Priority</label>
-              <select x-model="filters.priority" @change="resetPagination()"
-                class="mt-1 block w-full h-12 px-4 pr-10 shadow-sm  focus:ring-indigo-500 border border-gray-300 focus:outline-none focus:border-indigo-500">
-                <option value="">All</option>
-                <option value="urgent">Urgent</option>
-                <option value="regular">Regular</option>
-              </select>
+            <div class="flex rounded-sm overflow-hidden">
+              <!-- Gender Filter Tabs -->
+              <div class="relative flex flex-col bg-white rounded-lg shadow w-96 mx-auto p-2">
+                <div class="w-full">
+                  <ul class="tab-list relative flex flex-wrap px-1.5 py-1.5 list-none rounded-md bg-slate-100">
+                    <li class="z-30 flex-auto text-center">
+                      <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-md cursor-pointer bg-indigo-600 text-white shadow-sm"
+                        @click="setGenderFilter('all')" :class="{
+                          'bg-indigo-600 text-white shadow-lg': genderFilter === 'all',
+                          'glossy-effect': genderFilter === 'all'
+                        }">
+                        All
+                      </a>
+                    </li>
+                    <li class="z-30 flex-auto text-center">
+                      <a class="flex items-center justify-center w-full px-0 py-2 mb-0 text-sm transition-all ease-in-out border-0 rounded-lg cursor-pointer"
+                        @click="setGenderFilter('male')" :class="{
+                          'bg-indigo-600 text-white shadow-lg': genderFilter === 'male',
+                          'glossy-effect': genderFilter === 'male'
+                        }">
+                        Male
+                      </a>
+                    </li>
+                    <li class="z-30 flex-auto text-center">
+                      <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-lg cursor-pointer"
+                        @click="setGenderFilter('female')" :class="{
+                          'bg-indigo-600 text-white shadow-lg': genderFilter === 'female',
+                          'glossy-effect': genderFilter === 'female'
+                        }">
+                        Female
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700">Sort By</label>
-              <select x-model="sortOrder" @change="resetPagination()"
-                class="mt-1 block w-full h-12 px-4 pr-10 shadow-sm  focus:ring-indigo-500 border border-gray-300 focus:outline-none focus:border-indigo-500">
-                <option value="dateDesc">Date (Newest)</option>
-                <option value="dateAsc">Date (Oldest)</option>
-                <option value="relevance">Relevance</option>
-              </select>
-            </div>
+
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6">
+          <div class="bg-white p-2 rounded-md shadow-md text-center">
+            <p class="text-2xl font-bold text-indigo-600" x-text="displayedUsers.length"></p>
+            <p class="text-gray-600">Total Ads</p>
+          </div>
+          <div class="bg-white p-2 rounded-md shadow-md text-center">
+            <p class="text-2xl font-bold text-green-600"
+              x-text="displayedUsers.filter(u => u.gender === 'male').length"></p>
+            <p class="text-gray-600">Male Profiles</p>
+          </div>
+          <div class="bg-white p-2 rounded-md shadow-md text-center">
+            <p class="text-2xl font-bold text-pink-600"
+              x-text="displayedUsers.filter(u => u.gender === 'female').length"></p>
+            <p class="text-gray-600">Female Profiles</p>
+          </div>
+          <div class="bg-white p-2 rounded-md shadow-md text-center">
+            <p class="text-2xl font-bold text-yellow-600" x-text="displayedUsers.filter(u => u.urgent).length"></p>
+            <p class="text-gray-600">Urgent Ads</p>
           </div>
         </div>
 
-        <!-- Stats Section -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <!-- Total Profiles -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-indigo-600" x-text="filteredProfiles.length"></p>
-              <p class="text-sm text-gray-600">Total Profiles</p>
-            </div>
-          </div>
-
-          <!-- Male Profiles -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-green-600"
-                x-text="filteredProfiles.filter(p => p.gender === 'male').length"></p>
-              <p class="text-sm text-gray-600">Total Male</p>
-            </div>
-          </div>
-
-          <!-- Female Profiles -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-pink-600"
-                x-text="filteredProfiles.filter(p => p.gender === 'female').length"></p>
-              <p class="text-sm text-gray-600">Total Female</p>
-            </div>
-          </div>
-
-          <!-- Urgent Profiles -->
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-yellow-600"
-                x-text="filteredProfiles.filter(p => p.priority === 'urgent').length"></p>
-              <p class="text-sm text-gray-600">Total Urgent</p>
-            </div>
-          </div>
-        </div>
-        <div x-data="matchmaking">
-          <!-- Active Filters Section -->
-          <div class="flex flex-wrap gap-2 mb-6 bg-gray-50 border-1 border-yellow-100 p-4 shadow"
-            x-show="searchQuery || filters.education || filters.gender || filters.priority">
-
-            <!-- Search Query Badge -->
-            <template x-if="searchQuery">
-              <span
-                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
-                Search: <span x-text="searchQuery" class="ml-1"></span>
-                <button @click="searchQuery = ''; resetPagination()" class="ml-2 text-indigo-600 hover:text-indigo-900">
-                  <i class="fas fa-times"></i>
-                </button>
-              </span>
-            </template>
-
-            <!-- Education Badge -->
-            <template x-if="filters.education">
-              <span
-                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                Education: <span x-text="filters.education" class="ml-1 capitalize"></span>
-                <button @click="filters.education = ''; resetPagination()"
-                  class="ml-2 text-green-600 hover:text-green-900">
-                  <i class="fas fa-times"></i>
-                </button>
-              </span>
-            </template>
-
-            <!-- Gender Badge -->
-            <template x-if="filters.gender">
-              <span
-                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                Gender: <span x-text="filters.gender" class="ml-1 capitalize"></span>
-                <button @click="filters.gender = ''; resetPagination()" class="ml-2 text-blue-600 hover:text-blue-900">
-                  <i class="fas fa-times"></i>
-                </button>
-              </span>
-            </template>
-
-            <!-- Priority Badge -->
-            <template x-if="filters.priority">
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                Priority: <span x-text="filters.priority" class="ml-1 capitalize"></span>
-                <button @click="filters.priority = ''; resetPagination()" class="ml-2 text-red-600 hover:text-red-900">
-                  <i class="fas fa-times"></i>
-                </button>
-              </span>
-            </template>
-
-            <!-- Clear All Button -->
-            <button
-              @click="searchQuery = ''; filters.education = ''; filters.gender = ''; filters.priority = ''; resetPagination()"
-              class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-300 text-gray-800 hover:bg-gray-200">
-              Clear All Filters
-              <i class="fas fa-times ml-2"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Profile Listings -->
-        <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 card">
-          <template x-for="profile in filteredProfiles" :key="profile.id">
-            <div class="bg-white rounded-lg shadow-lg card-hover fade-in p-6"
-              :class="profile.priority === 'urgent' ? 'border-2 border-yellow-500 bg-yellow-50' : 'border border-gray-200'">
-              <div class="flex justify-between items-start">
-                <h2 class="text-xl font-semibold"
-                  :class="profile.priority === 'urgent' ? 'text-red-700' : 'text-gray-900'" x-text="profile.title">
-                </h2>
-                <span x-text="profile.priority"
-                  :class="profile.priority === 'urgent' ? 'bg-red-600 text-white font-semibold' : 'bg-green-50 text-green-800'"
-                  class="px-3 py-1 text-xs rounded-full uppercase"></span>
-              </div>
-              <p class="mt-2 text-md"
-                :class="profile.priority === 'urgent' ? 'text-red-800 tracking-wide' : 'text-gray-700'"
-                x-text="profile.description"></p>
-
-              <!-- Contact Methods -->
-              <div class="contact  border-t-1 border-gray-100 mt-3 mb-3">
-                <!-- Audio Message -->
-                <template x-if="profile.contact.audioMessage">
-                  <div class="audio-player">
-                    <audio :id="'audio-' + profile.id" preload="metadata">
-                      <source :src="profile.contact.audioMessage" type="audio/mpeg">
-                    </audio>
-                    <button @click="toggleAudio(profile.id)" class="audio-button">
-                      <svg class="absolute inset-0 w-full h-full -rotate-90 audio-progress">
-                        <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.2)" stroke-width="3" fill="none" />
-                        <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none" />
-                      </svg>
-                      <!-- Play Icon -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
-                        class="button-icon"
-                        :class="{'hidden': activeAudio === profile.id, 'inline-block': activeAudio !== profile.id}">
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                      <!-- Pause Icon -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"
-                        class="button-icon"
-                        :class="{'inline-block': activeAudio === profile.id, 'hidden': activeAudio !== profile.id}">
-                        <rect x="6" y="4" width="4" height="16" />
-                        <rect x="14" y="4" width="4" height="16" />
-                      </svg>
-                    </button>
-                  </div>
-                </template>
-
-                <!-- WhatsApp -->
-                <template x-if="profile.contact.whatsapp">
-                  <a :href="'https://wa.me/' + profile.contact.whatsapp" class="contact-button whatsapp-button"
-                    target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="button-icon">
-                      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                    </svg>
-                    <span>Contact</span>
-                  </a>
-                </template>
-
-                <!-- Phone -->
-                <template x-if="profile.contact.phone">
-                  <a :href="'tel:' + profile.contact.phone" class="contact-button call-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="button-icon">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                      </path>
-                    </svg>
-                    <span>Call</span>
-                  </a>
-                </template>
-              </div>
-
-              <div class="mt-3 text-xs font-semibold text-red-600">
-                <span x-text="'ID: ' + profile.id"></span>
-                <span class="mx-2">•</span>
-                <span x-text="new Date(profile.createdAt).toLocaleDateString()"></span>
-              </div>
-            </div>
+        <div class="flex flex-wrap gap-2 my-4">
+          <template x-for="filter in appliedFilters" :key="filter.name">
+            <span class="flex items-center px-3 py-1 bg-gray-200 text-sm rounded-full">
+              <span x-text="filter.name + ': ' + filter.value"></span>
+              <button @click="removeFilterBadge(filter.name)" class="ml-2 text-gray-600 hover:text-red-500">
+                <i class="fas fa-times"></i>
+              </button>
+            </span>
           </template>
         </div>
 
-        <!-- Loading State -->
-        <div x-show="loading" class="flex justify-center my-8">
-          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+        <!-- User List -->
+        <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
+            <div :class="{'bg-yellow-50 border-2 border-yellow-400': user.urgent, 'bg-white': !user.urgent}"
+              class="rounded-xs shadow-md p-6 card-hover fade-in relative pb-16">
+              <div class="flex justify-between items-start">
+                <h2 class="text-xl font-semibold" x-text="user.title"></h2>
+                <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
+                  Urgent
+                </p>
+              </div>
+              <p class="text-body-large text-gray-700 mb-2" x-text="user.body"></p>
+
+              <!-- Fixed position contact buttons at the bottom -->
+              <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
+                <a :href="'https://wa.me/' + user.phone" target="_blank"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                  </svg>
+                  <span>Contact</span>
+                </a>
+                <a :href="'tel:' + user.phone"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                  <span>Call</span>
+                </a>
+              </div>
+
+              <div class="relative mt-3 text-xs font-semibold text-red-600">
+                <span x-text="'LR ID: ' + user.id"></span>
+                <span class="mx-2">•</span>
+                <span x-text="'Date: ' + new Date(user.date).toLocaleDateString()"></span>
+              </div>
+            </div>
+          </template>
+
         </div>
 
-        <!-- Mobile Drawer -->
-        <div id="mobileDrawer"
-          class="fixed inset-x-0 bottom-0 h-96 bg-indigo-50 shadow-lg transform transition-transform duration-300 ease-in-out md:hidden"
-          :class="{'translate-y-0': drawerOpen, 'translate-y-full': !drawerOpen}">
-          <div class="px-4 py-4">
-            <div class="flex justify-between items-center">
-              <h2 class="text-lg font-semibold text-gray-800 my-3">Search & Filter Profiles</h2>
-              <button @click="toggleDrawer" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="space-y-4">
-              <input type="text" x-model="searchQuery" @input="resetPagination()" placeholder="Search profiles..."
-                class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
 
-              <select x-model="filters.education" @change="resetPagination()"
-                class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <option value="">All Levels</option>
-                <option value="high-school">High School</option>
-                <option value="bachelors">Bachelor's Degree</option>
-                <option value="masters">Master's Degree</option>
-                <option value="phd">PhD</option>
-              </select>
-              <div class="flex justify-between overflow-hidden">
-                <div class="relative flex flex-col bg-white rounded-lg shadow w-full mx-auto p-2">
-                  <div class="w-full">
-                    <ul class="tab-list relative flex flex-wrap px-1.5 py-1.5 list-none rounded-md bg-slate-100">
-                      <li class="z-30 flex-auto text-center">
-                        <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-md cursor-pointer"
-                          @click="filters.gender = ''; resetPagination()"
-                          :class="{'bg-indigo-600 text-white shadow-lg': filters.gender === ''}">
-                          All
-                        </a>
-                      </li>
-                      <li class="z-30 flex-auto text-center">
-                        <a class="flex items-center justify-center w-full px-0 py-2 mb-0 text-sm transition-all ease-in-out border-0 rounded-lg cursor-pointer"
-                          @click="filters.gender = 'male'; resetPagination()"
-                          :class="{'bg-indigo-600 text-white shadow-lg': filters.gender === 'male'}">
-                          Male
-                        </a>
-                      </li>
-                      <li class="z-30 flex-auto text-center">
-                        <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-lg cursor-pointer"
-                          @click="filters.gender = 'female'; resetPagination()"
-                          :class="{'bg-indigo-600 text-white shadow-lg': filters.gender === 'female'}">
-                          Female
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <select x-model="sortOrder" @change="resetPagination()"
-                class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <option value="dateDesc">Date (Newest)</option>
-                <option value="dateAsc">Date (Oldest)</option>
-                <option value="userUrgent">Urgent Only</option>
-                <option value="relevance">Relevance</option>
-              </select>
+        <div x-show="loading" class="text-center mt-8 fade-in">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
+          <p class="mt-2 text-gray-600">Loading more users...</p>
+        </div>
+      </div>
+      <!-- Mobile Drawer (Bottom) -->
+      <div id="mobileDrawer"
+        class="fixed inset-x-0 bottom-0 h-3/5 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden drawer"
+        :class="{'open': drawerOpen, 'closed': !drawerOpen}">
+        <div class="p-4">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-semibold text-gray-800">Filters</h2>
+            <button @click="toggleDrawer" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="space-y-4">
+            <input x-model="searchTerm" @input="resetPagination" type="search" placeholder="Search..."
+              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <input x-model="idFilter" @input="resetPagination" type="number" placeholder="Filter by ID"
+              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <select x-model="sortOrder" @change="resetPagination"
+              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="dateDesc">Date (Newest)</option>
+              <option value="dateAsc">Date (Oldest)</option>
+              <option value="userUrgent">Urgent</option>
+              <option value="relevance">Relevance</option>
+            </select>
+            <select x-model="educationFilter" @change="applyFilters()"
+              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="">All</option>
+              <option value="Preprimary">Preprimary</option>
+              <option value="Primary">Primary</option>
+              <option value="Upper Primary">Upper Primary</option>
+              <option value="Secondary">Secondary</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Post Graduate">Post Graduate</option>
+              <option value="Engineer">Engineer</option>
+              <option value="Doctor">Doctor</option>
+              <option value="PhD">PhD</option>
+              <option value="Hafiz/Aalim">Hafiz/Aalim</option>
+              <option value="Diploma">Diploma</option>
+            </select>
+
+            <div class="flex justify-between border border-gray-300 rounded-sm overflow-hidden">
+              <ul class="w-full tab-list relative flex flex-wrap px-1.5 py-1.5 list-none rounded-md bg-slate-100">
+                <li class="z-30 flex-auto text-center">
+                  <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-md cursor-pointer bg-indigo-600 text-white shadow-sm"
+                    @click="setGenderFilter('all')" :class="{
+                      'bg-indigo-600 text-white shadow-lg': genderFilter === 'all',
+                      'glossy-effect': genderFilter === 'all'
+                    }">
+                    All
+                  </a>
+                </li>
+                <li class="z-30 flex-auto text-center">
+                  <a class="flex items-center justify-center w-full px-0 py-2 mb-0 text-sm transition-all ease-in-out border-0 rounded-lg cursor-pointer"
+                    @click="setGenderFilter('male')" :class="{
+                      'bg-indigo-600 text-white shadow-lg': genderFilter === 'male',
+                      'glossy-effect': genderFilter === 'male'
+                    }">
+                    Male
+                  </a>
+                </li>
+                <li class="z-30 flex-auto text-center">
+                  <a class="flex items-center justify-center w-full px-0 py-2 text-sm mb-0 transition-all ease-in-out border-0 rounded-lg cursor-pointer"
+                    @click="setGenderFilter('female')" :class="{
+                      'bg-indigo-600 text-white shadow-lg': genderFilter === 'female',
+                      'glossy-effect': genderFilter === 'female'
+                    }">
+                    Female
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-          <button @click="toggleDrawer"
-            class="absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-3 text-center">
-            Close
-          </button>
         </div>
-
-        <!-- Floating Action Button -->
         <button @click="toggleDrawer"
-          class="fixed bottom-4 right-4 bg-indigo-500 text-white rounded-full p-4 shadow-lg md:hidden z-50"
-          :class="{'hidden': drawerOpen}">
-          <i class="fas fa-filter"></i>
-        </button>
+          class="absolute bottom-0 left-0 right-0 bg-indigo-600 text-white py-3 text-center">Close</button>
+      </div>
 
-
-      </main>
+      <!-- Floating Action Button -->
+      <button @click="toggleDrawer"
+        class="fixed bottom-4 right-4 bg-indigo-500 text-white rounded-full p-4 shadow-lg md:hidden filter-button"
+        :class="{'hidden': drawerOpen}">
+        <i class="fas fa-filter"></i>
+      </button>
     </div>
 
-    <script>
-      // Prefetch audio files
-      const prefetchAudio = (url) => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.as = 'audio';
-        link.href = url;
-        document.head.appendChild(link);
-      };
-    </script>
-    <footer>
-      <footer class="bg-gray-900 text-gray-300 mt-16 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- About Section -->
-            <div>
-              <h3 class="text-white text-lg font-semibold mb-4">About LiveRishtey</h3>
-              <p class="text-sm">LiveRishtey is a trusted matrimonial platform helping individuals find their perfect
-                life partner. We connect people across communities with verified profiles and secure matchmaking
-                services.</p>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-              <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-                <li><a href="/submit.html" class="hover:text-white transition-colors">Submit Profile</a></li>
-                <li><a href="https://telegram.me/liverishteyofficial" class="hover:text-white transition-colors">Post
-                    Ad</a></li>
-                <li><a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-
-            <!-- Services -->
-            <div>
-              <h3 class="text-white text-lg font-semibold mb-4">Our Services</h3>
-              <ul class="space-y-2 text-sm">
-                <li><a href="/matrimony/muslim" class="hover:text-white transition-colors">Muslim Matrimony</a></li>
-                <li><a href="/matrimony/hindu" class="hover:text-white transition-colors">Hindu Matrimony</a></li>
-                <li><a href="/matrimony/sikh" class="hover:text-white transition-colors">Sikh Matrimony</a></li>
-                <li><a href="/matrimony/christian" class="hover:text-white transition-colors">Christian Matrimony</a>
-                </li>
-                <li><a href="/matrimony/jain" class="hover:text-white transition-colors">Jain Matrimony</a></li>
-              </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div>
-              <h3 class="text-white text-lg font-semibold mb-4">Contact Us</h3>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a href="https://telegram.me/liverishteyofficial"
-                    class="flex items-center hover:text-white transition-colors">
-                    <i class="fab fa-telegram mr-2"></i>
-                    Join us on Telegram
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:support@liverishtey.com" class="flex items-center hover:text-white transition-colors">
-                    <i class="far fa-envelope mr-2"></i>
-                    support@liverishtey.com
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Bottom Section -->
-          <div class="mt-12 pt-8 border-t border-gray-800">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <!-- Copyright -->
-              <div class="text-sm text-center md:text-left">
-                <p>© 2024 LiveRishtey. All rights reserved.</p>
-                <p class="mt-2">This website is strictly for matrimonial purposes only and not a dating website.</p>
-              </div>
-
-              <!-- Social Links -->
-              <div class="flex justify-center md:justify-end space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                  <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://telegram.me/liverishteyofficial"
-                  class="text-gray-400 hover:text-white transition-colors">
-                  <i class="fab fa-telegram"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </footer>
-    <script type="module" src="mian.js"></script>
-
+    <script src="javascript.js"></script>
   </body>
 
 </html>
