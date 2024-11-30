@@ -15,12 +15,11 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="src/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       as="style">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -29,20 +28,7 @@
     <style>
       body {
         background-color: #edf6ff;
-      }        /* Default styles for English paragraphs */
-        :lang(en) .title, :lang(en) .description {
-            font-family: 'Roboto', sans-serif; /* English Font */
-            color: #333; /* Text color for English */
-            direction: ltr; /* Left to Right */
-            text-align: left; /* Align text to the left */
-        }
-
-        /* Styles for Urdu paragraphs */
-        :lang(ur) .title, :lang(ur) .description {
-            font-family: 'Noto Nastaliq Urdu', sans-serif; /* Urdu Font */
-            color: #555; /* Text color for Urdu */
-            direction: rtl; /* Right to Left */
-            text-align: right; /* Align text to the right */
+      }
 
       .gradient-bg {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -97,7 +83,7 @@
 
       .card-hover {
         transition: all 0.3s ease;
-        border-radius: 9px;
+        border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         height: 100%;
         /* Ensure all cards have the same height */
@@ -140,10 +126,10 @@
               <span class="font-bold text-xl">LiveRishtey</span>
             </div>
             <div class="flex items-center">
-              <a href="https://telegram.me/liverishtey" target="_blank"
+              <a href="https://www.liverishtey.com/i/" target="_self"
                 class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-sm text-indigo-600 bg-white hover:bg-indigo-50 focus:none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">
                 <i class="fab fa-telegram mr-2"></i>
-                Post Ad
+                Live Ads
               </a>
             </div>
           </div>
@@ -153,7 +139,7 @@
         <div class="flex">
           <div class="text-left" x-data="{
               text: 'Search',
-              textArray : ['Search & Filter Ads', '', 'Try LiveRishtey'],
+              textArray : ['Search Old Ads','Try LiveRishtey','Daily 1000 Ads'],
               textIndex: 0,
               charIndex: 0,
               pauseEnd: 1500,
@@ -304,50 +290,54 @@
           </template>
         </div>
 
-            <!-- User List -->
-    <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
+        <!-- User List -->
+        <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
             <div :class="{'bg-yellow-50 border-2 border-red-800': user.urgent, 'bg-white': !user.urgent}"
-                 class="shadow-md p-6 card-hover fade-in relative pb-16">
-                <div class="flex justify-between items-start">
-                    <h2 class="text-xl font-semibold title" x-text="user.title" :lang="user.language"></h2>
-                    <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
-                        Urgent
-                    </p>
-                </div>
-                <p class="text-body-large text-gray-700 mb-2 description" x-text="user.body" :lang="user.language"></p>
+              class="shadow-md p-6 card-hover fade-in relative pb-16">
+              <div class="flex justify-between items-start">
+                <h2 class="text-xl font-semibold" x-text="user.title"></h2>
+                <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
+                  Urgent
+                </p>
+              </div>
+              <p class="text-body-large text-gray-700 mb-2" x-text="user.body"></p>
 
-                <!-- Fixed position contact buttons at the bottom -->
-                <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
-                    <a :href="'https://wa.me/' + user.phone" target="_blank"
-                       class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="transition-transform duration-200 group-hover:scale-110">
-                            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                        </svg>
-                        <span>Contact</span>
-                    </a>
-                    <a :href="'tel:' + user.phone"
-                       class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                             class="transition-transform duration-200 group-hover:scale-110">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <span>Call</span>
-                    </a>
-                </div>
+              <!-- Fixed position contact buttons at the bottom -->
+              <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
+                <a :href="'https://wa.me/' + user.phone" target="_blank"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                  </svg>
+                  <span>Contact</span>
+                </a>
+                <a :href="'tel:' + user.phone"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                  <span>Call</span>
+                </a>
+              </div>
 
-                <div class="relative mt-3 text-xs font-semibold text-red-600">
-                    <span x-text="'LR ID: ' + user.id"></span>
-                    <span class="mx-2">•</span>
-                    <span x-text="'Date: ' + new Date(user.date).toLocaleDateString()"></span>
-                </div>
+              <div class="relative mt-3 text-xs font-semibold text-red-600">
+                <span x-text="'LR ID: ' + user.id"></span>
+                <span class="mx-2">•</span>
+                <span x-text="'Date: ' + new Date(user.date).toLocaleDateString()"></span>
+              </div>
             </div>
-        </template>
-    </div>
-        
+          </template>
+
+        </div>
+
+
         <div x-show="loading" class="text-center mt-8 fade-in">
           <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
           <p class="mt-2 text-gray-600">Loading more users...</p>
@@ -378,7 +368,7 @@
             </select>
             <select x-model="educationFilter" @change="applyFilters()"
               class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <option value="">All Education</option>
+              <option value="">All</option>
               <option value="Preprimary">Preprimary</option>
               <option value="Primary">Primary</option>
               <option value="Upper Primary">Upper Primary</option>
@@ -424,7 +414,7 @@
                 </li>
               </ul>
             </div>
-             <a href="https://telegram.me/liverishteyofficial"
+            <a href="https://telegram.me/liverishteyofficial"
               class="inline-block font-semibold py-2 px-4 rounded w-full rounded-md focus:outline-none bg-red-600 shadow-md text-white text-xl py-3 my-3 text-center">
               Post Your Ad
             </a>
