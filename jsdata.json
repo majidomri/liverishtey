@@ -153,14 +153,13 @@
     "gender": "female",
     "education": "Post Graduate"
   },
-  {
-    "id": 1732936627927,
+  {"id": 1732,
     "title": "Wanted Groom",
     "name": "Aliya",
+    "priority": "Urgent",
     "phone": "9959018625",
     "body": "سنی مسلم لڑکا عمر 29 سالہ قد 5۔9 تعلیمی قابلیت B.Tech ہینڈسم Software Eng اور MNC میں ملازم ماہانہ اچھی یافت Well Settled لڑکے کے لئے اسی مناسبت سے تعلیم یافتہ اور شریف گھرانے کی فیر کلر خوش اخلاق سلیقہ مند جاذب نظر لڑکی سے رشتہ مطلوب ہے۔ شادی جلدی کی جائے گی۔ Most Urgent ",
-    "gender": "",
-    "urgent": true,
+    "gender": "male",
     "date": "2024-11-30T03:17:07.927Z"
   }
 ]
