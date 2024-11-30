@@ -20,6 +20,7 @@
     <link rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       as="style">
+    <link href="https://fonts.google.com/share?selection.family=Noto+Nastaliq+Urdu:wght@400..700">
     @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaleeq+Urdu&display=swap');
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -28,9 +29,10 @@
     <link rel="manifest" href="/site.webmanifest">
 
 <style>
-  .font-noto-nastaleeq {
-    font-family: 'Noto Nastaleeq Urdu', serif;
+  .font-noto-nastaliq {
+    font-family: 'Noto Nastaliq Urdu', serif;
   }
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap');
 
       body {
         background-color: #edf6ff;
@@ -296,7 +298,7 @@
           </template>
         </div>
 
-      <!-- User List -->
+     <!-- User List -->
 <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
     <div 
@@ -307,7 +309,7 @@
       <div class="flex justify-between items-start">
         <h2 
           class="text-xl font-semibold" 
-          :class="{'font-noto-nastaleeq text-right': isUrdu, 'text-left': !isUrdu}" 
+          :class="{'font-noto-nastaliq text-right': isUrdu, 'text-left': !isUrdu}" 
           x-text="user.title">
         </h2>
         <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
@@ -317,7 +319,7 @@
       
       <p 
         class="text-body-large text-gray-700 mb-2" 
-        :class="{'font-noto-nastaleeq text-right': isUrdu, 'text-left': !isUrdu}" 
+        :class="{'font-noto-nastaliq text-right': isUrdu, 'text-left': !isUrdu}" 
         x-text="user.body">
       </p>
 
@@ -449,7 +451,7 @@
     </div>
 
     <script src="javascript.js"></script>
-    <script>
+   <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('languageDetector', (user) => ({
       isUrdu: false,
