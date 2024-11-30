@@ -19,6 +19,8 @@
     <link rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       as="style">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -27,6 +29,19 @@
     <style>
       body {
         background-color: #edf6ff;
+      }
+       /* Default styles for English paragraphs */
+      :lang(en) .title,
+      :lang(en) .description {
+        font-family: 'Roboto', sans-serif;
+        /* English Font */
+      }
+
+      /* Styles for Urdu paragraphs */
+      :lang(ur) .title,
+      :lang(ur) .description {
+        font-family: 'Noto Nastaliq Urdu', sans-serif;
+        /* Text color for Urdu */
       }
 
       .gradient-bg {
@@ -82,7 +97,7 @@
 
       .card-hover {
         transition: all 0.3s ease;
-        border-radius: 12px;
+        border-radius: 9px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         height: 100%;
         /* Ensure all cards have the same height */
@@ -289,18 +304,18 @@
           </template>
         </div>
 
-        <!-- User List -->
+         <!-- User List -->
         <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
-            <div :class="{'bg-yellow-50 border-2 border-yellow-400': user.urgent, 'bg-white': !user.urgent}"
-              class="rounded-xs shadow-md p-6 card-hover fade-in relative pb-16">
+            <div :class="{'bg-yellow-50 border-2 border-red-800': user.urgent, 'bg-white': !user.urgent}"
+              class="shadow-md p-6 card-hover fade-in relative pb-16">
               <div class="flex justify-between items-start">
-                <h2 class="text-xl font-semibold" x-text="user.title"></h2>
+                <h2 class="text-xl font-semibold title" x-text="user.title" :lang="user.language"></h2>
                 <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
                   Urgent
                 </p>
               </div>
-              <p class="text-body-large text-gray-700 mb-2" x-text="user.body"></p>
+              <p class="text-body-large text-gray-700 mb-2 description" x-text="user.body" :lang="user.language"></p>
 
               <!-- Fixed position contact buttons at the bottom -->
               <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
@@ -333,9 +348,7 @@
               </div>
             </div>
           </template>
-
         </div>
-
 
         <div x-show="loading" class="text-center mt-8 fade-in">
           <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
@@ -367,7 +380,7 @@
             </select>
             <select x-model="educationFilter" @change="applyFilters()"
               class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <option value="">All</option>
+              <option value="">All Education</option>
               <option value="Preprimary">Preprimary</option>
               <option value="Primary">Primary</option>
               <option value="Upper Primary">Upper Primary</option>
@@ -413,6 +426,10 @@
                 </li>
               </ul>
             </div>
+             <a href="https://telegram.me/liverishteyofficial"
+              class="inline-block font-semibold py-2 px-4 rounded w-full rounded-md focus:outline-none bg-red-600 shadow-md text-white text-xl py-3 my-3 text-center">
+              Post Your Ad
+            </a>
           </div>
         </div>
         <button @click="toggleDrawer"
