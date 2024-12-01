@@ -361,20 +361,20 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-          <div class="space-y-4">
+          <div class="space-y-3">
             <input x-model="searchTerm" @input="resetPagination" type="search" placeholder="Search..."
-              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              class="w-full p-1 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             <input x-model="idFilter" @input="resetPagination" type="number" placeholder="Filter by ID"
-              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              class="w-full p-1 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             <select x-model="sortOrder" @change="resetPagination"
-              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              class="w-full p-1 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="dateDesc">Date (Newest)</option>
               <option value="dateAsc">Date (Oldest)</option>
               <option value="userUrgent">Urgent</option>
               <option value="relevance">Relevance</option>
             </select>
             <select x-model="educationFilter" @change="applyFilters()"
-              class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              class="w-full p-1 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="">All</option>
               <option value="Preprimary">Preprimary</option>
               <option value="Primary">Primary</option>
@@ -422,7 +422,7 @@
               </ul>
             </div>
             <a href="https://telegram.me/liverishteyofficial"
-              class="inline-block font-semibold py-2 px-4 rounded w-full rounded-md focus:outline-none bg-red-600 shadow-md text-white text-xl py-3 my-3 text-center">
+              class="inline-block font-semibold py-2 px-4 rounded w-full rounded-md focus:outline-none bg-red-600 shadow-md text-white text-xl py-3 my-2 text-center">
               Post Your Ad
             </a>
           </div>
