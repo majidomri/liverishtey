@@ -156,7 +156,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -1074,6 +1074,10 @@ p{
   align-items: center;
 }
 
+.justify-normal{
+  justify-content: normal;
+}
+
 .justify-end{
   justify-content: flex-end;
 }
@@ -1267,6 +1271,11 @@ p{
 .border-indigo-500{
   --tw-border-opacity: 1;
   border-color: rgb(99 102 241 / var(--tw-border-opacity, 1));
+}
+
+.border-red-800{
+  --tw-border-opacity: 1;
+  border-color: rgb(153 27 27 / var(--tw-border-opacity, 1));
 }
 
 .border-transparent{
@@ -1675,12 +1684,24 @@ p{
   text-align: center;
 }
 
+.text-right{
+  text-align: right;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
 .font-\[Poppins\]{
   font-family: Poppins;
 }
 
 .font-sans{
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-urdu{
+  font-family: Noto Nastaliq Urdu, serif;
 }
 
 .text-2xl{
@@ -1741,6 +1762,10 @@ p{
   font-weight: 600;
 }
 
+.font-normal{
+  font-weight: 400;
+}
+
 .uppercase{
   text-transform: uppercase;
 }
@@ -1755,6 +1780,14 @@ p{
 
 .leading-relaxed{
   line-height: 1.625;
+}
+
+.leading-loose{
+  line-height: 2;
+}
+
+.leading-10{
+  line-height: 2.5rem;
 }
 
 .tracking-wide{

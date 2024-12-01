@@ -15,23 +15,25 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="src/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       as="style">
-    <link href="https://fonts.google.com/share?selection.family=Noto+Nastaliq+Urdu:wght@400..700">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap"
+      rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-<style>
-  .font-noto-nastaliq {
-    font-family: 'Noto Nastaliq Urdu', serif;
-  }
+    <style>
       body {
-        background-color: #edf6ff;
+        background-color: #f6fbff;
+      }
+
+      .font-urdu {
+        font-family: 'Noto Nastaliq Urdu', 'Arial', 'serif';
       }
 
       .gradient-bg {
@@ -88,14 +90,14 @@
       .card-hover {
         transition: all 0.3s ease;
         border-radius: 6px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         height: 100%;
         /* Ensure all cards have the same height */
       }
 
       /* Add this to your main CSS or in a <style> tag */
       .glossy-effect {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2f55ff 0%, #7919da 100%);
         box-shadow:
           inset 0 0 10px rgba(255, 255, 255, 0.2),
           /* Soft inner shadow */
@@ -119,7 +121,7 @@
     </style>
   </head>
 
-  <body class="bg-gray-100 min-h-screen font-sans antialiased">
+  <body class="min-h-screen font-sans antialiased">
     <div id="app" x-data="userDirectory()" x-init="init()" class="relative">
       <!-- Navbar -->
       <nav class="gradient-bg text-white shadow-md">
@@ -294,63 +296,54 @@
           </template>
         </div>
 
-     <!-- User List -->
-<div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
-    <div 
-      x-data="languageDetector(user)"
-      :class="{'bg-yellow-50 border-2 border-red-800': user.urgent, 'bg-white': !user.urgent}"
-      class="shadow-md p-6 card-hover fade-in relative pb-16">
-      
-      <div class="flex justify-between items-start">
-        <h2 
-          class="text-xl font-semibold" 
-          :class="{'font-noto-nastaliq text-right': isUrdu, 'text-left': !isUrdu}" 
-          x-text="user.title">
-        </h2>
-        <p x-show="user.urgent" class="font-semibold text-white bg-red-600 rounded-full px-3 py-1 text-xs">
-          Urgent
-        </p>
-      </div>
-      
-      <p 
-        class="text-body-large text-gray-700 mb-2" 
-        :class="{'font-noto-nastaliq text-right': isUrdu, 'text-left': !isUrdu}" 
-        x-text="user.body">
-      </p>
+        <!-- User List -->
+        <div id="userList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="(user, index) in displayedUsers" :key="`${user.id}-${index}`">
+            <div :class="{'bg-yellow-50 border-2 border-yellow-500': user.urgent, 'bg-white': !user.urgent}"
+              class="rounded-xs shadow-md p-6 card-hover fade-in relative pb-16">
+              <div class="flex justify-between items-start">
+                <h2 :class="isUrdu(user.title) 
+    ? 'font-urdu text-right text-xl leading-relaxed font-semibold' 
+    : 'font-sans text-left text-2xl font-semibold'" :dir="isUrdu(user.title) ? 'rtl' : 'ltr'" x-text="user.title"></h2>
+                <p x-show="user.urgent" class="font-semibold text-black bg-yellow-400 rounded px-3 py-1 text-sm">
+                  URGENT
+                </p>
+              </div>
+              <p :class="isUrdu(user.body) ? 'font-urdu text-justify text-md leading-loose text-gray-700' : 'text-left text-lg leading-relaxed text-gray-700 mb-2'"
+                :dir="isUrdu(user.body) ? 'rtl' : 'ltr'" x-text="user.body"></p>
+              <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
+                <a :href="'https://wa.me/' + user.phone" target="_blank"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                  </svg>
+                  <span>Contact</span>
+                </a>
+                <a :href="'tel:' + user.phone"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-200 group-hover:scale-110">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                  <span>Call</span>
+                </a>
+              </div>
+              <div class="relative mt-3 text-xs font-semibold text-red-600">
+                <span x-text="'LR ID: ' + user.id"></span>
+                <span class="mx-2">•</span>
+                <span x-text="'Date: ' + new Date(user.date).toLocaleDateString()"></span>
+              </div>
+            </div>
+          </template>
+        </div>
 
-      <!-- Fixed position contact buttons at the bottom -->
-      <div class="absolute bottom-0 left-0 right-0 p-4 flex justify-between space-x-4">
-        <a :href="'https://wa.me/' + user.phone" target="_blank"
-          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="transition-transform duration-200 group-hover:scale-110">
-            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-          </svg>
-          <span>Contact</span>
-        </a>
-        <a :href="'tel:' + user.phone"
-          class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-700 to-black text-white rounded-md hover:from-indigo-600 hover:to-blue-600 transition-all duration-300 group">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="transition-transform duration-200 group-hover:scale-110">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-            </path>
-          </svg>
-          <span>Call</span>
-        </a>
-      </div>
 
-      <div class="relative mt-3 text-xs font-semibold text-red-600">
-        <span x-text="'LR ID: ' + user.id"></span>
-        <span class="mx-2">•</span>
-        <span x-text="'Date: ' + new Date(user.date).toLocaleDateString()"></span>
-      </div>
-    </div>
-  </template>
-</div>
+
 
         <div x-show="loading" class="text-center mt-8 fade-in">
           <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
@@ -359,7 +352,7 @@
       </div>
       <!-- Mobile Drawer (Bottom) -->
       <div id="mobileDrawer"
-        class="fixed inset-x-0 bottom-0 h-3/5 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden drawer"
+        class="fixed inset-x-0 bottom-0 h-2/5 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden drawer"
         :class="{'open': drawerOpen, 'closed': !drawerOpen}">
         <div class="p-4">
           <div class="flex justify-between items-center mb-6">
@@ -382,7 +375,7 @@
             </select>
             <select x-model="educationFilter" @change="applyFilters()"
               class="w-full p-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <option value="">All Educations</option>
+              <option value="">All</option>
               <option value="Preprimary">Preprimary</option>
               <option value="Primary">Primary</option>
               <option value="Upper Primary">Upper Primary</option>
@@ -447,17 +440,6 @@
     </div>
 
     <script src="javascript.js"></script>
-   <script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('languageDetector', (user) => ({
-      isUrdu: false,
-      init() {
-        const urduRegex = /[\u0600-\u06FF]/;
-        this.isUrdu = urduRegex.test(user.title) || urduRegex.test(user.body);
-      },
-    }));
-  });
-</script>
   </body>
 
 </html>
