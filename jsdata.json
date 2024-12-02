@@ -153,7 +153,8 @@
     "gender": "female",
     "education": "Post Graduate"
   },
-  {"id": 1732,
+  {
+    "id": 1732,
     "title": "Wanted Groom",
     "priority": "Urgent",
     "phone": "9959018625",
@@ -161,7 +162,7 @@
     "gender": "male",
     "date": "2024-11-30T03:17:07.927Z"
   },
-    {
+  {
     "id": 1733,
     "title": "ضرورت رشتہ لڑکی",
     "phone": "+19175620098",
@@ -170,6 +171,17 @@
     "gender": "female",
     "priority": "Urgent",
     "date": "2024-12-01T06:22:42.223Z",
-      "education": "Post Graduate"
+    "education": "Post Graduate"
+  },
+  {
+    "id": 1734,
+    "title": "Wanted Bride",
+    "phone": "9876543210",
+    "whatsapp": "9876543210",
+    "body": "سنی مسلم لڑکا عمر 35 سالہ، 11۔5 قد ، برسرروزگار ، کاروباری لڑکے کے لئے اسی مناسبت سے نسلی مالدار، خوش اخلاق، سلیقہ مند، دیندار اور نمازی لڑکی سے رشتہ مطلوب ہے۔ شادی جلدی کی جائے گی۔",
+    "gender": "male",
+    "education": "Post Graduate",
+    "priority": "Normal",
+    "date": "2024-12-02T03:10:05.054Z"
   }
 ]
