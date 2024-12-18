@@ -6,11 +6,13 @@ function userDirectory() {
     idFilter: "",
     sortOrder: "dateDesc",
     genderFilter: "all",
-    educationFilter: "all", // New filter
+    educationFilter: "all",
+    ageFilter: "all",
     loading: false,
     drawerOpen: false,
     page: 1,
     perPage: 500,
+    totalRecords: 0,
     appliedFilters: [],
 
     init() {
@@ -30,12 +32,16 @@ function userDirectory() {
         this.users = newUsers.map((user) => ({
           ...user,
           date: user.date || new Date().toISOString(), // Use provided date or fallback to current date
-          urgent: user.priority === "Urgent", // Map priority to urgent status
+          urgent: user.priority?.toLowerCase() === "urgent", // Map priority to urgent status
         }));
+
+        // Update totalRecords
+        this.totalRecords = this.users.length;
 
         this.applyFilters(); // Update displayed users
       } catch (error) {
         console.error("Error fetching users:", error);
+        alert("Failed to fetch users. Please try again later.");
       } finally {
         this.loading = false;
       }
@@ -49,8 +55,7 @@ function userDirectory() {
           !this.loading &&
           this.page * this.perPage < this.totalRecords
         ) {
-          this.page++;
-          this.fetchUsers();
+          this.loadMore();
         }
       });
     },
@@ -58,7 +63,7 @@ function userDirectory() {
     loadMore() {
       if (this.users.length >= this.totalRecords) return; // Stop fetching if all records are loaded
       this.page++;
-      this.fetchUsers();
+      this.applyFilters(); // Load next set of users
     },
 
     resetPagination() {
@@ -87,6 +92,7 @@ function userDirectory() {
       if (name === "ID") this.idFilter = "";
       if (name === "Gender") this.genderFilter = "all";
       if (name === "Education") this.educationFilter = "all";
+      if (name === "Age") this.ageFilter = "all";
       if (name === "Sort") this.sortOrder = "dateDesc";
       this.applyFilters();
     },
@@ -103,6 +109,7 @@ function userDirectory() {
         this.addFilterBadge("Gender", this.genderFilter);
       if (this.educationFilter !== "all")
         this.addFilterBadge("Education", this.educationFilter);
+      if (this.ageFilter !== "all") this.addFilterBadge("Age", this.ageFilter);
       if (this.sortOrder !== "dateDesc")
         this.addFilterBadge("Sort", this.sortOrder);
 
@@ -111,8 +118,8 @@ function userDirectory() {
         const searchLower = this.searchTerm.toLowerCase();
         filteredUsers = filteredUsers.filter(
           (user) =>
-            user.title.toLowerCase().includes(searchLower) ||
-            user.body.toLowerCase().includes(searchLower)
+            (user.title || "").toLowerCase().includes(searchLower) ||
+            (user.body || "").toLowerCase().includes(searchLower)
         );
       }
 
@@ -137,18 +144,27 @@ function userDirectory() {
         );
       }
 
+      // Apply age filter
+      if (this.ageFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.age === parseInt(this.ageFilter, 10)
+        );
+      }
+
       // Apply sorting
       filteredUsers.sort((a, b) => {
+        const safeDate = (date) =>
+          isNaN(new Date(date)) ? new Date() : new Date(date);
         switch (this.sortOrder) {
           case "dateDesc":
-            return new Date(b.date) - new Date(a.date);
+            return safeDate(b.date) - safeDate(a.date);
           case "dateAsc":
-            return new Date(a.date) - new Date(b.date);
+            return safeDate(a.date) - safeDate(b.date);
           case "userUrgent":
             if (!a.urgent && !b.urgent) return 0;
             if (a.urgent && !b.urgent) return -1;
             if (!a.urgent && b.urgent) return 1;
-            return new Date(b.date) - new Date(a.date);
+            return safeDate(b.date) - safeDate(a.date);
           default:
             const aRelevance = this.calculateRelevance(a);
             const bRelevance = this.calculateRelevance(b);
@@ -161,7 +177,13 @@ function userDirectory() {
         filteredUsers = filteredUsers.filter((user) => user.urgent);
       }
 
-      this.displayedUsers = filteredUsers;
+      // Paginate results
+      const startIndex = (this.page - 1) * this.perPage;
+      this.displayedUsers = filteredUsers.slice(
+        startIndex,
+        startIndex + this.perPage
+      );
+
       this.loading = false; // Hide loading when filtering done
     },
 
@@ -169,8 +191,9 @@ function userDirectory() {
       if (!this.searchTerm) return 0;
       const searchLower = this.searchTerm.toLowerCase();
       let relevance = 0;
-      if (user.title.toLowerCase().includes(searchLower)) relevance += 3;
-      if (user.body.toLowerCase().includes(searchLower)) relevance += 2;
+      if ((user.title || "").toLowerCase().includes(searchLower))
+        relevance += 3;
+      if ((user.body || "").toLowerCase().includes(searchLower)) relevance += 2;
       return relevance;
     },
 
@@ -184,10 +207,17 @@ function userDirectory() {
       this.resetPagination();
     },
 
+    setAgeFilter(age) {
+      this.ageFilter = age;
+      this.resetPagination();
+    },
+
     toggleDrawer() {
       this.drawerOpen = !this.drawerOpen;
     },
+
     isUrdu(text) {
+      // Checks if the input text contains Urdu characters
       const urduRegex = /[\u0600-\u06FF]/;
       return urduRegex.test(text);
     },
