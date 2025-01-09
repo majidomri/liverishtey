@@ -30,6 +30,7 @@ function userDirectory() {
         );
         const newUsers = await response.json();
 
+        // Process users and remove duplicates
         this.users = newUsers.map((user) => ({
           ...user,
           date: user.date || new Date().toISOString(),
@@ -37,7 +38,9 @@ function userDirectory() {
         }));
 
         this.totalRecords = this.users.length;
-        this.resetPagination(); // Initialize displayedUsers
+
+        // Initialize filtering and pagination
+        this.applyFilters();
       } catch (error) {
         console.error("Error fetching users:", error);
         alert("Failed to fetch users. Please try again.");
@@ -47,26 +50,22 @@ function userDirectory() {
     },
 
     setupInfiniteScroll() {
-      let scrollTimeout;
       window.addEventListener("scroll", () => {
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          if (
-            window.innerHeight + window.scrollY >=
-              document.body.offsetHeight - 500 &&
-            !this.loading &&
-            this.page * this.perPage < this.totalRecords
-          ) {
-            this.loadMore();
-          }
-        }, 200); // Debounce scroll events
+        if (
+          window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 500 &&
+          !this.loading &&
+          this.page * this.perPage < this.totalRecords
+        ) {
+          this.loadMore();
+        }
       });
     },
 
     loadMore() {
       if (this.page * this.perPage >= this.totalRecords) return; // Stop if all records are loaded
       this.page++;
-      this.applyFilters(); // Load next set of users
+      this.applyFilters(); // Load more filtered users
     },
 
     resetPagination() {
@@ -75,79 +74,6 @@ function userDirectory() {
       this.applyFilters(); // Reset filters and pagination
     },
 
-    applyFilters() {
-      if (!this.users.length) return;
-
-      let filteredUsers = [...this.users];
-
-      // Apply all filters
-      if (this.searchTerm) {
-        const searchLower = this.searchTerm.toLowerCase();
-        filteredUsers = filteredUsers.filter(
-          (user) =>
-            (user.title || "").toLowerCase().includes(searchLower) ||
-            (user.body || "").toLowerCase().includes(searchLower)
-        );
-      }
-
-      if (this.idFilter) {
-        filteredUsers = filteredUsers.filter(
-          (user) => user.id.toString() === this.idFilter
-        );
-      }
-
-      if (this.genderFilter !== "all") {
-        filteredUsers = filteredUsers.filter(
-          (user) => user.gender === this.genderFilter
-        );
-      }
-
-      if (this.educationFilter !== "all") {
-        filteredUsers = filteredUsers.filter(
-          (user) => user.education === this.educationFilter
-        );
-      }
-
-      if (this.ageFilter !== "all") {
-        filteredUsers = filteredUsers.filter(
-          (user) => user.age === parseInt(this.ageFilter, 10)
-        );
-      }
-
-      // Apply sorting
-      filteredUsers.sort((a, b) => {
-        const safeDate = (date) =>
-          isNaN(new Date(date)) ? new Date() : new Date(date);
-        switch (this.sortOrder) {
-          case "dateDesc":
-            return safeDate(b.date) - safeDate(a.date);
-          case "dateAsc":
-            return safeDate(a.date) - safeDate(b.date);
-          case "userUrgent":
-            if (!a.urgent && !b.urgent) return 0;
-            if (a.urgent && !b.urgent) return -1;
-            if (!a.urgent && b.urgent) return 1;
-            return safeDate(b.date) - safeDate(a.date);
-          default:
-            return 0;
-        }
-      });
-
-      // Paginate filtered results
-      const startIndex = (this.page - 1) * this.perPage;
-      const paginatedUsers = filteredUsers.slice(
-        startIndex,
-        startIndex + this.perPage
-      );
-
-      if (paginatedUsers.length) {
-        this.displayedUsers = this.displayedUsers.concat(paginatedUsers); // Append new results
-      }
-
-      this.loading = false;
-    },
-
-    // Utility methods
     addFilterBadge(name, value) {
       const existingBadge = this.appliedFilters.find(
         (badge) => badge.name === name
@@ -172,6 +98,120 @@ function userDirectory() {
       if (name === "Sort") this.sortOrder = "dateDesc";
 
       this.resetPagination(); // Reapply filters
+    },
+
+    applyFilters() {
+      if (!this.users.length) return;
+
+      let filteredUsers = [...this.users];
+
+      // Clear existing filters
+      this.appliedFilters = [];
+      if (this.searchTerm) this.addFilterBadge("Search", this.searchTerm);
+      if (this.idFilter) this.addFilterBadge("ID", this.idFilter);
+      if (this.genderFilter !== "all")
+        this.addFilterBadge("Gender", this.genderFilter);
+      if (this.educationFilter !== "all")
+        this.addFilterBadge("Education", this.educationFilter);
+      if (this.ageFilter !== "all") this.addFilterBadge("Age", this.ageFilter);
+      if (this.sortOrder !== "dateDesc")
+        this.addFilterBadge("Sort", this.sortOrder);
+
+      // Apply search filter
+      if (this.searchTerm) {
+        const searchLower = this.searchTerm.toLowerCase();
+        filteredUsers = filteredUsers.filter(
+          (user) =>
+            (user.title || "").toLowerCase().includes(searchLower) ||
+            (user.body || "").toLowerCase().includes(searchLower)
+        );
+      }
+
+      // Apply ID filter
+      if (this.idFilter) {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.id.toString() === this.idFilter
+        );
+      }
+
+      // Apply gender filter
+      if (this.genderFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.gender === this.genderFilter
+        );
+      }
+
+      // Apply education filter
+      if (this.educationFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.education === this.educationFilter
+        );
+      }
+
+      // Apply age filter
+      if (this.ageFilter !== "all") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.age === parseInt(this.ageFilter, 10)
+        );
+      }
+
+      // Sort users
+      filteredUsers.sort((a, b) => {
+        const safeDate = (date) =>
+          isNaN(new Date(date)) ? new Date() : new Date(date);
+        switch (this.sortOrder) {
+          case "dateDesc":
+            return safeDate(b.date) - safeDate(a.date);
+          case "dateAsc":
+            return safeDate(a.date) - safeDate(b.date);
+          case "userUrgent":
+            if (!a.urgent && !b.urgent) return 0;
+            if (a.urgent && !b.urgent) return -1;
+            if (!a.urgent && b.urgent) return 1;
+            return safeDate(b.date) - safeDate(a.date);
+          default:
+            const aRelevance = this.calculateRelevance(a);
+            const bRelevance = this.calculateRelevance(b);
+            return bRelevance - aRelevance;
+        }
+      });
+
+      // Filter out non-urgent listings if necessary
+      if (this.sortOrder === "userUrgent") {
+        filteredUsers = filteredUsers.filter((user) => user.urgent);
+      }
+
+      // Paginate results
+      const startIndex = (this.page - 1) * this.perPage;
+      this.displayedUsers = [
+        ...this.displayedUsers,
+        ...filteredUsers.slice(startIndex, startIndex + this.perPage),
+      ];
+    },
+
+    calculateRelevance(user) {
+      if (!this.searchTerm) return 0;
+      const searchLower = this.searchTerm.toLowerCase();
+      let relevance = 0;
+      if ((user.title || "").toLowerCase().includes(searchLower))
+        relevance += 3;
+      if ((user.body || "").toLowerCase().includes(searchLower)) relevance += 2;
+      return relevance;
+    },
+
+    setGenderFilter(gender) {
+      this.genderFilter = gender;
+      this.resetPagination();
+    },
+
+    setEducationFilter(education) {
+      this.educationFilter = education;
+      this.resetPagination();
+    },
+
+    setAgeFilter(age) {
+      this.ageFilter = age;
+      this.resetPagination();
     },
 
     toggleDrawer() {
