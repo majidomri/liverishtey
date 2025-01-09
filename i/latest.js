@@ -37,10 +37,7 @@ function userDirectory() {
         }));
 
         this.totalRecords = this.users.length;
-
-        // Initialize displayedUsers on fetch
-        this.page = 1;
-        this.applyFilters();
+        this.resetPagination(); // Initialize displayedUsers
       } catch (error) {
         console.error("Error fetching users:", error);
         alert("Failed to fetch users. Please try again.");
@@ -62,14 +59,20 @@ function userDirectory() {
           ) {
             this.loadMore();
           }
-        }, 200);
+        }, 200); // Debounce scroll events
       });
     },
 
     loadMore() {
-      if (this.page * this.perPage >= this.totalRecords) return; // Prevent loading beyond available records
+      if (this.page * this.perPage >= this.totalRecords) return; // Stop if all records are loaded
       this.page++;
-      this.applyFilters();
+      this.applyFilters(); // Load next set of users
+    },
+
+    resetPagination() {
+      this.page = 1;
+      this.displayedUsers = [];
+      this.applyFilters(); // Reset filters and pagination
     },
 
     applyFilters() {
@@ -77,7 +80,7 @@ function userDirectory() {
 
       let filteredUsers = [...this.users];
 
-      // Apply search filter
+      // Apply all filters
       if (this.searchTerm) {
         const searchLower = this.searchTerm.toLowerCase();
         filteredUsers = filteredUsers.filter(
@@ -87,28 +90,24 @@ function userDirectory() {
         );
       }
 
-      // Apply ID filter
       if (this.idFilter) {
         filteredUsers = filteredUsers.filter(
           (user) => user.id.toString() === this.idFilter
         );
       }
 
-      // Apply gender filter
       if (this.genderFilter !== "all") {
         filteredUsers = filteredUsers.filter(
           (user) => user.gender === this.genderFilter
         );
       }
 
-      // Apply education filter
       if (this.educationFilter !== "all") {
         filteredUsers = filteredUsers.filter(
           (user) => user.education === this.educationFilter
         );
       }
 
-      // Apply age filter
       if (this.ageFilter !== "all") {
         filteredUsers = filteredUsers.filter(
           (user) => user.age === parseInt(this.ageFilter, 10)
@@ -130,15 +129,11 @@ function userDirectory() {
             if (!a.urgent && b.urgent) return 1;
             return safeDate(b.date) - safeDate(a.date);
           default:
-            return 0; // Default to no sorting if the sortOrder is unknown
+            return 0;
         }
       });
 
-      if (this.sortOrder === "userUrgent") {
-        filteredUsers = filteredUsers.filter((user) => user.urgent);
-      }
-
-      // Paginate results
+      // Paginate filtered results
       const startIndex = (this.page - 1) * this.perPage;
       const paginatedUsers = filteredUsers.slice(
         startIndex,
@@ -146,16 +141,46 @@ function userDirectory() {
       );
 
       if (paginatedUsers.length) {
-        this.displayedUsers = this.displayedUsers.concat(paginatedUsers);
+        this.displayedUsers = this.displayedUsers.concat(paginatedUsers); // Append new results
       }
 
-      this.loading = false; // Ensure loading is reset
+      this.loading = false;
     },
 
-    resetPagination() {
-      this.page = 1;
-      this.displayedUsers = [];
-      this.applyFilters();
+    // Utility methods
+    addFilterBadge(name, value) {
+      const existingBadge = this.appliedFilters.find(
+        (badge) => badge.name === name
+      );
+      if (!existingBadge) {
+        this.appliedFilters.push({ name, value });
+      } else {
+        existingBadge.value = value;
+      }
+    },
+
+    removeFilterBadge(name) {
+      this.appliedFilters = this.appliedFilters.filter(
+        (badge) => badge.name !== name
+      );
+
+      if (name === "Search") this.searchTerm = "";
+      if (name === "ID") this.idFilter = "";
+      if (name === "Gender") this.genderFilter = "all";
+      if (name === "Education") this.educationFilter = "all";
+      if (name === "Age") this.ageFilter = "all";
+      if (name === "Sort") this.sortOrder = "dateDesc";
+
+      this.resetPagination(); // Reapply filters
+    },
+
+    toggleDrawer() {
+      this.drawerOpen = !this.drawerOpen;
+    },
+
+    isUrdu(text) {
+      const urduRegex = /[\u0600-\u06FF]/;
+      return urduRegex.test(text);
     },
   };
 }
