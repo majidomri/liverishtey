@@ -23,55 +23,70 @@ function userDirectory() {
     async fetchUsers() {
       if (this.loading) return; // Prevent concurrent fetches
       this.loading = true;
-
       try {
         const response = await fetch(
           `https://raw.githubusercontent.com/majidomri/liverishtey/main/jsdata.json`
         );
-        const newUsers = await response.json();
+        const allUsers = await response.json();
 
-        // Process users and remove duplicates
-        this.users = newUsers.map((user) => ({
+        // Use the data directly without generating random fields
+        this.users = allUsers.slice(0, 1000).map((user) => ({
           ...user,
-          date: user.date || new Date().toISOString(),
-          urgent: user.priority?.toLowerCase() === "urgent",
+          date: user.date || new Date().toISOString(), // Use provided date or fallback to current date
+          urgent: user.priority?.toLowerCase() === "urgent", // Map priority to urgent status
         }));
 
+        // Update totalRecords
         this.totalRecords = this.users.length;
 
-        // Initialize filtering and pagination
-        this.applyFilters();
+        this.applyFilters(); // Update displayed users
       } catch (error) {
         console.error("Error fetching users:", error);
-        alert("Failed to fetch users. Please try again.");
+        alert("Failed to fetch users. Please try again later.");
       } finally {
         this.loading = false;
       }
     },
 
+    // setupInfiniteScroll() {
+    //   window.addEventListener("scroll", () => {
+    //     if (
+    //       window.innerHeight + window.scrollY >=
+    //         document.body.offsetHeight - 500 &&
+    //       !this.loading &&
+    //       this.page * this.perPage < this.totalRecords
+    //     ) {
+    //       this.loadMore();
+    //     }
+    //   });
+    // },
+
     setupInfiniteScroll() {
+      let scrollTimeout;
       window.addEventListener("scroll", () => {
-        if (
-          window.innerHeight + window.scrollY >=
-            document.body.offsetHeight - 500 &&
-          !this.loading &&
-          this.page * this.perPage < this.totalRecords
-        ) {
-          this.loadMore();
-        }
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          if (
+            window.innerHeight + window.scrollY >=
+              document.body.offsetHeight - 500 &&
+            !this.loading &&
+            this.page * this.perPage < this.totalRecords
+          ) {
+            this.loadMore();
+          }
+        }, 50); // Add a delay to avoid frequent executions
       });
     },
 
     loadMore() {
-      if (this.page * this.perPage >= this.totalRecords) return; // Stop if all records are loaded
+      if (this.users.length >= this.totalRecords) return; // Stop fetching if all records are loaded
       this.page++;
-      this.applyFilters(); // Load more filtered users
+      this.applyFilters(); // Load next set of users
     },
 
     resetPagination() {
-      this.page = 1;
-      this.displayedUsers = [];
-      this.applyFilters(); // Reset filters and pagination
+      this.users = [];
+      this.fetchUsers();
     },
 
     addFilterBadge(name, value) {
@@ -89,23 +104,22 @@ function userDirectory() {
       this.appliedFilters = this.appliedFilters.filter(
         (badge) => badge.name !== name
       );
-
+      // Reset the corresponding filter and reapply
       if (name === "Search") this.searchTerm = "";
       if (name === "ID") this.idFilter = "";
       if (name === "Gender") this.genderFilter = "all";
       if (name === "Education") this.educationFilter = "all";
       if (name === "Age") this.ageFilter = "all";
       if (name === "Sort") this.sortOrder = "dateDesc";
-
-      this.resetPagination(); // Reapply filters
+      this.applyFilters();
     },
 
     applyFilters() {
-      if (!this.users.length) return;
+      if (!this.users.length) return; // Do not filter if no users exist
+      this.loading = true; // Show loading while filtering
+      let filteredUsers = this.users;
 
-      let filteredUsers = [...this.users];
-
-      // Clear existing filters
+      // Update filter badges
       this.appliedFilters = [];
       if (this.searchTerm) this.addFilterBadge("Search", this.searchTerm);
       if (this.idFilter) this.addFilterBadge("ID", this.idFilter);
@@ -155,7 +169,7 @@ function userDirectory() {
         );
       }
 
-      // Sort users
+      // Apply sorting
       filteredUsers.sort((a, b) => {
         const safeDate = (date) =>
           isNaN(new Date(date)) ? new Date() : new Date(date);
@@ -176,17 +190,19 @@ function userDirectory() {
         }
       });
 
-      // Filter out non-urgent listings if necessary
+      // When sorting by urgent, filter out non-urgent listings
       if (this.sortOrder === "userUrgent") {
         filteredUsers = filteredUsers.filter((user) => user.urgent);
       }
 
       // Paginate results
       const startIndex = (this.page - 1) * this.perPage;
-      this.displayedUsers = [
-        ...this.displayedUsers,
-        ...filteredUsers.slice(startIndex, startIndex + this.perPage),
-      ];
+      this.displayedUsers = filteredUsers.slice(
+        startIndex,
+        startIndex + this.perPage
+      );
+
+      this.loading = false; // Hide loading when filtering done
     },
 
     calculateRelevance(user) {
@@ -219,6 +235,7 @@ function userDirectory() {
     },
 
     isUrdu(text) {
+      // Checks if the input text contains Urdu characters
       const urduRegex = /[\u0600-\u06FF]/;
       return urduRegex.test(text);
     },
