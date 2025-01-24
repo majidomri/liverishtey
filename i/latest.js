@@ -15,12 +15,12 @@ function userDirectory() {
     totalRecords: 0,
     appliedFilters: [],
 
-    init() {
+    init: function () {
       this.fetchUsers();
       this.setupInfiniteScroll();
     },
 
-    async fetchUsers() {
+    fetchUsers: async function () {
       if (this.loading) return; // Prevent concurrent fetches
       this.loading = true;
       try {
@@ -48,48 +48,50 @@ function userDirectory() {
       }
     },
 
-    // setupInfiniteScroll() {
+    // setupInfiniteScroll: function () {
+    //   let scrollTimeout;
     //   window.addEventListener("scroll", () => {
-    //     if (
-    //       window.innerHeight + window.scrollY >=
-    //         document.body.offsetHeight - 500 &&
-    //       !this.loading &&
-    //       this.page * this.perPage < this.totalRecords
-    //     ) {
-    //       this.loadMore();
-    //     }
+    //     if (scrollTimeout) clearTimeout(scrollTimeout);
+    //     scrollTimeout = setTimeout(() => {
+    //       if (
+    //         window.innerHeight + window.scrollY >=
+    //           document.body.offsetHeight - 500 &&
+    //         !this.loading &&
+    //         this.page * this.perPage < this.totalRecords
+    //       ) {
+    //         this.loadMore();
+    //       }
+    //     }, 50); // Add a delay to avoid frequent executions
     //   });
     // },
-
     setupInfiniteScroll() {
-      let scrollTimeout;
-      window.addEventListener("scroll", () => {
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
           if (
-            window.innerHeight + window.scrollY >=
-              document.body.offsetHeight - 500 &&
+            entries[0].isIntersecting &&
             !this.loading &&
             this.page * this.perPage < this.totalRecords
           ) {
             this.loadMore();
           }
-        }, 50); // Add a delay to avoid frequent executions
-      });
-    },
+        },
+        { threshold: 0.1 }
+      );
 
-    loadMore() {
+      observer.observe(this.$refs.sentinel);
+    },
+    loadMore: function () {
       if (this.users.length >= this.totalRecords) return; // Stop fetching if all records are loaded
       this.page++;
       this.applyFilters(); // Load next set of users
     },
 
-    resetPagination() {
+    resetPagination: function () {
       this.users = [];
       this.fetchUsers();
     },
 
-    addFilterBadge(name, value) {
+    addFilterBadge: function (name, value) {
       const existingBadge = this.appliedFilters.find(
         (badge) => badge.name === name
       );
@@ -100,7 +102,7 @@ function userDirectory() {
       }
     },
 
-    removeFilterBadge(name) {
+    removeFilterBadge: function (name) {
       this.appliedFilters = this.appliedFilters.filter(
         (badge) => badge.name !== name
       );
@@ -114,7 +116,7 @@ function userDirectory() {
       this.applyFilters();
     },
 
-    applyFilters() {
+    applyFilters: function () {
       if (!this.users.length) return; // Do not filter if no users exist
       this.loading = true; // Show loading while filtering
       let filteredUsers = this.users;
@@ -205,7 +207,7 @@ function userDirectory() {
       this.loading = false; // Hide loading when filtering done
     },
 
-    calculateRelevance(user) {
+    calculateRelevance: function (user) {
       if (!this.searchTerm) return 0;
       const searchLower = this.searchTerm.toLowerCase();
       let relevance = 0;
@@ -215,26 +217,26 @@ function userDirectory() {
       return relevance;
     },
 
-    setGenderFilter(gender) {
+    setGenderFilter: function (gender) {
       this.genderFilter = gender;
       this.resetPagination();
     },
 
-    setEducationFilter(education) {
+    setEducationFilter: function (education) {
       this.educationFilter = education;
       this.resetPagination();
     },
 
-    setAgeFilter(age) {
+    setAgeFilter: function (age) {
       this.ageFilter = age;
       this.resetPagination();
     },
 
-    toggleDrawer() {
+    toggleDrawer: function () {
       this.drawerOpen = !this.drawerOpen;
     },
 
-    isUrdu(text) {
+    isUrdu: function (text) {
       // Checks if the input text contains Urdu characters
       const urduRegex = /[\u0600-\u06FF]/;
       return urduRegex.test(text);

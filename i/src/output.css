@@ -176,6 +176,8 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /*
