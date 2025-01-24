@@ -25,7 +25,7 @@ function userDirectory() {
       this.loading = true;
       try {
         const response = await fetch(
-          `https://raw.githubusercontent.com/majidomri/liverishtey/main/profiles.json`
+          `https://raw.githubusercontent.com/majidomri/liverishtey/main/jsdata.json`
         );
         const allUsers = await response.json();
 
